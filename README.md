@@ -3,3 +3,4 @@
 
 Team Lead (tentative): Reed Bowling
 Database Lead: Spencer Gilson
+Architect: Brent Lee
