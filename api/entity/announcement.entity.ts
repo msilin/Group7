@@ -13,7 +13,4 @@ export class Announcement {
 
   @Column()
   public content!: string;
-
-  @Column()
-  public imageUrl!: string;
 }

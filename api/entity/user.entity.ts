@@ -1,5 +1,11 @@
 import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
 
+export enum userType {
+  "ANON",
+  "EMPLOYEE",
+  "ADMIN",
+}
+
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
@@ -20,4 +26,7 @@ export class User {
   @Column()
   @Index({ unique: true })
   public emailAddress!: string;
+
+  @Column({default: userType.EMPLOYEE})
+  public type!: userType;
 }
