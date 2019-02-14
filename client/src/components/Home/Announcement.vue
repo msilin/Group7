@@ -1,8 +1,7 @@
 <template>
-    <article class="announcement message is-info">
+    <article class="home-entry message is-info">
         <div class="message-header">
             <p class="header is-3" style="margin-right: 10px">{{announcement.title}}</p>
-            
             <p class="subtitle is-6">{{formattedDate}}</p>
         </div>
         <div class="message-body">
@@ -15,8 +14,8 @@
 import Vue from "vue";
 import { Component, Prop } from "vue-property-decorator";
 
-import { iAnnouncement } from "../models/announcement.interface";
-import { formatDate } from "../utils/date.utils";
+import { iAnnouncement } from "@/models/announcement.interface";
+import { formatDate } from "@/utils/date.utils";
 
 @Component
 export default class Announcement extends Vue {
@@ -30,10 +29,3 @@ export default class Announcement extends Vue {
   }
 }
 </script>
-
-<style scoped>
-.announcement {
-  border-color: dimgray;
-  border-width: 4px;
-}
-</style>

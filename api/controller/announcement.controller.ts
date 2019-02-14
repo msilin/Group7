@@ -12,7 +12,6 @@ export class AnnouncementController extends DefaultController {
     const router = express.Router();
 
     router.route("/announcements").get((req: Request, res: Response) => {
-        console.log(res.locals.userType);
         const announcementRepo = getRepository(Announcement);
         announcementRepo.find().then((foundAnnouncements: Announcement[] | undefined) => {
             if (!foundAnnouncements) {
