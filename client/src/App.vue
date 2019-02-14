@@ -18,7 +18,6 @@
             <div class="navbar-start" style="display: flex; justify-content: center">
               <router-link
                 style="padding: 20px"
-                class="navbar-item is-tab"
                 to="/"
                 exact-active-class="is-active"
               >Home</router-link>

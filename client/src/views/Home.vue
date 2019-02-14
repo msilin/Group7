@@ -6,54 +6,10 @@
             20px;"
   >
     <!-- About Us  -->
-    <div
-      class="column" 
-      style="display: flex; flex-direction: column;
-                padding: 50px;">
-      <h1 class="title">Contact Us</h1>
-      <h2 style="text-align: center">ABOUT US</h2>
-      <img
-        src="@/assets/aboutUs.jpeg"
-        style="height: 183; width: 275;
-                    align-self: center; padding-top: 20px"
-      >
-      <p style="width: 300px; padding-top: 20px">
-        Located on Foothill Boulevard, we are
-        the
-        closest bike shop
-        to Cal Poly, a quick ride from Downtown San Luis Obispo, and
-        an easy commute from Cuesta College.
-      </p>
-      <p style="width: 300px">
-        No bike rack? No Problem! If you can't
-        get
-        your bike to us,
-        we'll come to you! We offer pickup and delivery for repairs
-        and new bike purchases! Contact us for details.
-      </p>
-    </div>
+    <AboutUs></AboutUs>
 
     <!-- Hours & Location  -->
-    <div
-      class="column"
-      style="display: flex; flex-direction: column; padding: 50px;
-                border-left: 2px solid gray; border-right: 2px solid
-                gray; align-items: center"
-    >
-      <h2>HOURS</h2>
-      <p>Monday to Friday 10 AM - 6 PM</p>
-      <p>Saturday 10 AM - 5 PM</p>
-      <p>Sunday 12 PM - 5 PM</p>
-      <h2 style="padding-top: 20px">LOCATION</h2>
-      <p>767 East Foothill Blvd Ste B</p>
-      <p style="padding-bottom: 20px">San Luis Obispo, CA 93405</p>
-
-      <img
-        src="@/assets/location.png"
-        style="height: 300; width: 300;
-                    align-self: center"
-      >
-    </div>
+    <Info></Info>
 
     <!-- Announcements  -->
       <HomeAnnouncements></HomeAnnouncements>
@@ -62,9 +18,37 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import HomeAnnouncements from "@/components/HomeAnnouncements.vue";
+import HomeAnnouncements from "@/components/Home/Announcements.vue";
+import AboutUs from '@/components/Home/AboutUs.vue';
+import Info from '@/components/Home/Info.vue'
+
 @Component({
-  components: {HomeAnnouncements}
+  components: {
+    HomeAnnouncements,
+    AboutUs,
+    Info
+  }
 })
 export default class Home extends Vue {}
 </script>
+
+<style>
+.home-entry {
+  border-color: dimgray;
+  border-width: 4px;
+}
+.title {
+  text-align: center
+}
+.h-column {
+  display: flex; 
+  flex-direction: column; 
+  padding-left: 25px;
+  padding-right: 25px;
+}
+.column-center {
+  border-left-width: 2px;
+  border-right-width: 2px;
+  border-color: gray;
+}
+</style>
