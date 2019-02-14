@@ -17,19 +17,19 @@
           <div class="navbar-menu">
             <div class="navbar-start" style="display: flex; justify-content: center">
               <router-link
-                style="padding: 60px"
+                style="padding: 20px"
                 class="navbar-item is-tab"
                 to="/"
                 exact-active-class="is-active"
               >Home</router-link>
               <router-link
-                style="padding: 60px"
+                style="padding: 20px"
                 class="navbar-item is-tab"
-                to="/store"
+                to="/testshop"
                 exact-active-class="is-active"
               >Store</router-link>
               <router-link
-                style="padding: 60px"
+                style="padding: 20px"
                 class="navbar-item is-tab"
                 to="/services"
                 exact-active-class="is-active"

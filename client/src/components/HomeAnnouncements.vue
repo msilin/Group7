@@ -1,5 +1,5 @@
 <template>
-    <div id="announcements" class="column box">
+    <div id="announcements" class="column">
         <h1 class="title">Announcements</h1>
         <Announcement 
             v-for="a in announcements" 
@@ -50,6 +50,6 @@ interface AnnouncementResponse {
 #announcements {
   display: flex; 
   flex-direction: column; 
-  padding: 50px;
+  padding-left: 50px;
 }
 </style>

@@ -40,3 +40,11 @@ export interface Item {
 }
 
 </script>
+
+<style scoped>
+.shopitem{
+    width: 30%;
+    height: 20%;
+    margin: 10px;
+}
+</style>

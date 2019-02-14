@@ -6,8 +6,11 @@
             20px;"
   >
     <!-- About Us  -->
-    <div style="display: flex; flex-direction: column;
+    <div
+      class="column" 
+      style="display: flex; flex-direction: column;
                 padding: 50px;">
+      <h1 class="title">Contact Us</h1>
       <h2 style="text-align: center">ABOUT US</h2>
       <img
         src="@/assets/aboutUs.jpeg"
@@ -32,6 +35,7 @@
 
     <!-- Hours & Location  -->
     <div
+      class="column"
       style="display: flex; flex-direction: column; padding: 50px;
                 border-left: 2px solid gray; border-right: 2px solid
                 gray; align-items: center"

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="display:flex">
         <ShopItem v-for="item in myItems" v-bind:key="item.id" v-bind:item="item"></ShopItem>
     </div>
 </template>
@@ -14,8 +14,10 @@ import ShopItem from "@/components/ShopItem.vue";
 })
 export default class TestShop extends Vue {
     myItems: Item[] = [
-        {id: 1,  name: "Test", price: 12.0, desc: "This is a test item!", imageUrl: "https://i.imgur.com/CfuoLpA.jpg"},
-        {id: 2,  name: "Test 2", price: 15.0, desc: "This is a test item again!", imageUrl: "https://i.imgur.com/CfuoLpA.jpg"}
+        {id: 1,  name: "Test", price: 12.0, desc: "This is a test item!", imageUrl: "@/src/assets/bike.jpeg"},
+        {id: 2,  name: "Test 2", price: 15.0, desc: "This is a test item again!", imageUrl: "https://i.imgur.com/CfuoLpA.jpg"},
+        {id: 3,  name: "Test 3", price: 12.0, desc: "This is a test item!", imageUrl: "https://i.imgur.com/CfuoLpA.jpg"},
+        {id: 4,  name: "Test 4", price: 15.0, desc: "This is a test item again!", imageUrl: "https://i.imgur.com/CfuoLpA.jpg"}
     ]
 
 }
