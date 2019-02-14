@@ -1,11 +1,13 @@
 <template>
-    <div id="announcements" class="column">
+    <div id="announcements" class="h-column column">
         <h1 class="title">Announcements</h1>
-        <Announcement 
+        <div class="scrollable">
+          <Announcement 
             v-for="a in announcements" 
             :key="a.id"
             v-bind:announcement="a">
-        </Announcement>
+          </Announcement>
+        </div>
     </div>
 </template>
 
@@ -15,12 +17,12 @@ import { Component, Prop } from "vue-property-decorator";
 import Announcement from "./Announcement.vue";
 import { iAnnouncement } from "@/models/announcement.interface";
 import axios, { AxiosResponse } from "axios";
-import { APIConfig } from "../utils/api.utils";
+import { APIConfig } from "@/utils/api.utils";
 
 @Component({
   components: { Announcement }
 })
-export default class HomeAnnouncements extends Vue {
+export default class Announcements extends Vue {
   announcements: iAnnouncement[] = [];
   error: string | boolean = false;
 
@@ -47,9 +49,9 @@ interface AnnouncementResponse {
 </script>
 
 <style scoped>
-#announcements {
-  display: flex; 
-  flex-direction: column; 
-  padding-left: 50px;
+.scrollable {
+  overflow-y: scroll;
+  height: 700px;
 }
 </style>
+
