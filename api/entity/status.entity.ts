@@ -21,8 +21,8 @@ export class Status {
   @Column()
   public type!: statusType;
 
-  @Column()
-  public isCurrent: boolean = true;
+  @Column({default: true})
+  public isCurrent!: boolean;
 }
 
 export enum statusType {

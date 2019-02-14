@@ -1,26 +1,39 @@
 <template>
   <div id="app">
-    <div class="navbar" role="navigation" aria-label="main navigation">
-      <div class="navbar-menu">
-        <div class="navbar-start">
-          <router-link class="navbar-item is-tab" to="/" exact-active-class="is-active">Home</router-link>
-          <router-link class="navbar-item is-tab" to="/about" exact-active-class="is-active">About</router-link>
-          <router-link class="navbar-item is-tab" to="/testshop" exact-active-class="is-active">Test Shop</router-link>
-        </div>
-        <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="buttons">
-              <a class="button is-primary" v-if="!isLoggedIn" v-on:click="showSignupModal()">
-                <strong>Sign up</strong>
-              </a>
+    <!-- This div contains Order Status button, Title, navbar, and signin button -->
+    <div
+      style="display:flex; justify-content:space-evenly; align-items:
+            center; padding-top: 40px;"
+    >
+      <button style="height: 40px; width: 80px">ORDER STATUS</button>
+      <div>
+        <img src="./assets/foxCycleLogo.png">
+      </div>
+      <button style="height: 40px; width: 80px">SIGN IN</button>
+    </div>
+    <div style="display: flex; justify-content: center; padding-bottom: 40px;">
+      <div style="width: auto">
+        <div class="navbar" role="navigation" aria-label="main navigation">
+          <div class="navbar-menu">
+            <div class="navbar-start" style="display: flex; justify-content: center">
               <router-link
-                class="button is-text"
-                v-if="isLoggedIn"
-                to="/my-profile"
+                style="padding: 60px"
+                class="navbar-item is-tab"
+                to="/"
                 exact-active-class="is-active"
-              >My Profile</router-link>
-              <a class="button is-light" v-if="!isLoggedIn" v-on:click="showLoginModal()">Log in</a>
-              <a class="button is-light" v-if="isLoggedIn" v-on:click="logout">Log out</a>
+              >Home</router-link>
+              <router-link
+                style="padding: 60px"
+                class="navbar-item is-tab"
+                to="/store"
+                exact-active-class="is-active"
+              >Store</router-link>
+              <router-link
+                style="padding: 60px"
+                class="navbar-item is-tab"
+                to="/services"
+                exact-active-class="is-active"
+              >Services</router-link>
             </div>
           </div>
         </div>
