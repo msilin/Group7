@@ -52,20 +52,15 @@
     </div>
 
     <!-- Announcements  -->
-    <div style="display: flex; flex-direction: column; padding: 50px">
-      <h2 style="text-align: center">ANNOUNCEMENTS</h2>
-      <br>
-      <p>THESE ARE ANNOUNCEMENTS!!!!</p>
-      <br>
-      <p>MORE ANNOUNCEMENTS!!!!</p>
-      <br>
-      <p>ANOTHER ANNOUNCEMENT!!!!</p>
-    </div>
+      <HomeAnnouncements></HomeAnnouncements>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import HomeAnnouncements from "@/components/HomeAnnouncements.vue";
+@Component({
+  components: {HomeAnnouncements}
+})
 export default class Home extends Vue {}
 </script>

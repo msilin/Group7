@@ -48,6 +48,8 @@ interface AnnouncementResponse {
 
 <style scoped>
 #announcements {
-  margin-top: 3em;
+  display: flex; 
+  flex-direction: column; 
+  padding: 50px;
 }
 </style>

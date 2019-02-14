@@ -1,8 +1,8 @@
 <template>
     <article class="announcement message is-info">
         <div class="message-header">
-            <p class="header is-3">{{announcement.title}}</p>
-            <br>
+            <p class="header is-3" style="margin-right: 10px">{{announcement.title}}</p>
+            
             <p class="subtitle is-6">{{formattedDate}}</p>
         </div>
         <div class="message-body">
