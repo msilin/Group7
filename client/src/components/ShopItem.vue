@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-image">
                 <figure class="image is-4by3">
-                    <img v-bind:src="item.url" alt="">
+                    <img v-bind:src="item.imageUrl">
                 </figure>
             </div>
             <div class="card-content">
@@ -28,23 +28,15 @@ import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 
 @Component
 export default class ShopItem extends Vue {
-    @Prop({default: null}) item!: Item | null
+  @Prop({ default: null })
+  item!: Item | null;
 }
 
 export interface Item {
-    id: number,
-    name: string,
-    desc: string,
-    price: number,
-    imageUrl: string
+  id: number;
+  name: string;
+  desc: string;
+  price: number;
+  imageUrl: string;
 }
-
 </script>
-
-<style scoped>
-.shopitem{
-    width: 30%;
-    height: 20%;
-    margin: 10px;
-}
-</style>
