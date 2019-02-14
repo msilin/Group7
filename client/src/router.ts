@@ -3,6 +3,7 @@ import Router from "vue-router";
 import Home from "./views/Home.vue";
 import ToDos from "./views/ToDos.vue";
 import MyProfile from "./views/MyProfile.vue";
+import TestShop from "./views/TestShop.vue";
 
 Vue.use(Router);
 
@@ -33,6 +34,11 @@ export default new Router({
       path: "/my-profile",
       name: "myProfile",
       component: MyProfile
+    },
+    {
+      path: "/testshop",
+      name: "testshop",
+      component: TestShop
     }
   ]
 });
