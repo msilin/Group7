@@ -6,9 +6,9 @@
             center; padding-top: 40px;"
     >
       <button style="height: 40px; width: 80px">ORDER STATUS</button>
-      <div>
-        <img src="./assets/foxCycleLogo.png">
-      </div>
+      <figure class="image" style="width: 30%;">
+        <img src="./assets/logo.png" style="width: auto; height: auto; position: relative;">  
+      </figure>
       <button style="height: 40px; width: 80px">SIGN IN</button>
     </div>
     <div style="display: flex; justify-content: center; padding-bottom: 40px;">
