@@ -48,19 +48,6 @@
       </div>
     </div>
 
-<<<<<<< HEAD
-=======
-    <div class="hero">
-      <div class="hero-body">
-        <div class="container logo">
-          <figure class="image">
-            <img src="./assets/logo.png">
-          </figure>
-        </div>
-      </div>
-    </div>
-
->>>>>>> 4dba3cc630504655192b3bea5271df608abb4a43
     <router-view class="container"/>
     <Signup
       v-bind:is-showing="showSignup"
