@@ -22,11 +22,10 @@ export class AnnouncementController extends DefaultController {
         });
     }).post((req: Request, res: Response) => {
         const announcementRepo = getRepository(Announcement);
-        const { newTitle, newContent, newImageUrl } = req.body;
+        const { newTitle, newContent } = req.body;
         const newAnnouncement = {
             content: newContent,
             datePosted: new Date(),
-            // imageUrl: newImageUrl,
             title: newTitle,
         };
         announcementRepo.save(newAnnouncement).then((savedAnnouncement: Announcement) => {
@@ -34,7 +33,6 @@ export class AnnouncementController extends DefaultController {
         });
     });
     router.route("/announcements/:id").delete((req: Request, res: Response) => {
-        const id = req.params.id;
         const announcementRepo = getRepository(Announcement);
         announcementRepo.delete(req.params.id).then(() => { res.sendStatus(200); } );
     });

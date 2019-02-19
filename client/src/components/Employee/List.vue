@@ -1,13 +1,13 @@
 <template>
     <div class="employeelist">
-        <table class="table is-hoverable">
+        <table class="table is-hoverable is-fullwidth">
             <thead>
                 <tr>
-                    <th><abbr title="Id">EmployeeId</abbr></th>
+                    <th><abbr title="Id">Id</abbr></th>
                     <th><abbr title="LastName">Last Name</abbr></th>
                     <th><abbr title="FirstName">First Name</abbr></th>
                     <th><abbr title="Permissions">Permissions</abbr></th>
-                    <th></th>
+                    <th>Edit</th>
                 </tr>
             </thead>
             <tbody>
@@ -16,8 +16,8 @@
                     <td>{{e.lastName}}</td>
                     <td>{{e.firstName}}</td>
                     <td>{{e.userType === 2 ? "Admin" : "Employee"}}</td>
-                    <td> <button class="button is-warn is-small" v-on:click="edit(e)">
-                        Edit
+                    <td> <button class="button is-info is-outlined is-small" v-on:click="edit(e)">
+                        <font-awesome-icon class="icon" icon="edit"></font-awesome-icon>
                         </button></td>
                 </tr>
             </tbody>

@@ -1,5 +1,5 @@
 <template>
-  <div id="about-us" class="column">
+  <div id="about-us" class="column is-one-third">
     <h1 class="title has-text-centered">About Us</h1>
     <span class="box">
         <article class="message is-info">

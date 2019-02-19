@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+        <LogoHero></LogoHero>
         <div class="columns is-multiline">
             <div v-for="item in myItems" v-bind:key="item.id" class="column is-one-quarter">
                 <div class="shop-card">
@@ -14,9 +15,10 @@
 import { Component, Vue } from "vue-property-decorator";
 import { Item } from "@/components/ShopItem.vue";
 import ShopItem from "@/components/ShopItem.vue";
+import LogoHero from "@/components/LogoHero.vue";
 
 @Component({
-  components: { ShopItem }
+  components: { ShopItem, LogoHero }
 })
 export default class TestShop extends Vue {
   myItems: Item[] = [

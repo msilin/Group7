@@ -25,21 +25,17 @@
           >
         </div>
       </div>
-      <div v-if="viewerPriveleges == 2" class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">Permissions</label>
-        </div>
-        <div class="field-body">
-          <div class="control">
-            <label class="radio">
-              <input type="radio" value="2" name="permission" v-model="user.userType">
-              Admin
-            </label>
-            <label class="radio">
-              <input type="radio" value="1" name="permission" v-model="user.userType">
-              Employee
-            </label>
-          </div>
+      <div v-if="viewerPriveleges == 2" class="field">
+        <label class="label">Permissions</label>
+        <div class="control">
+          <label class="radio">
+            <input type="radio" value="2" name="permission" v-model="user.userType">
+            Admin
+          </label>
+          <label class="radio">
+            <input type="radio" value="1" name="permission" v-model="user.userType">
+            Employee
+          </label>
         </div>
       </div>
       <div class="field is-horizontal">

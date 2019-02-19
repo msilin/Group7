@@ -1,34 +1,27 @@
 <template>
-  <!-- This div contains the information columns. Has a div for About Us, Hours & Location, and Announcements -->
   <div id="home">
-    <div class="hero">
-      <div class="hero-body">
-        <div class="container logo">
-          <figure class="image">
-            <img src="@/assets/logo.png">
-          </figure>
-        </div>
-      </div>
-    </div>
+    <LogoHero></LogoHero>
     <div class="columns" style="padding-top: 100px;">
       <AboutUs></AboutUs>
       <Info></Info>
-      <HomeAnnouncements></HomeAnnouncements>
+      <HomeList></HomeList>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import HomeAnnouncements from "@/components/Home/Announcements.vue";
+import HomeList from "@/components/Announcement/HomeList.vue";
 import AboutUs from "@/components/Home/AboutUs.vue";
 import Info from "@/components/Home/Info.vue";
+import LogoHero from "@/components/LogoHero.vue";
 
 @Component({
   components: {
-    HomeAnnouncements,
+    HomeList,
     AboutUs,
-    Info
+    Info,
+    LogoHero
   }
 })
 export default class Home extends Vue {}
