@@ -32,7 +32,7 @@ export class UserController extends DefaultController {
             res.status(200).send({ createdUser });
           },
           (reason: any) => {
-            res.status(500).send({ reason: "The email was not unique" });
+            res.status(500).send({ reason: "Email was not unique" });
           },
         );
       });
@@ -81,7 +81,7 @@ export class UserController extends DefaultController {
         } else {
           res.sendStatus(500);
         }
-      })
+      });
     });
     return router;
   }

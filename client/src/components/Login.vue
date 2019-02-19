@@ -7,7 +7,6 @@
     v-on:cancel="cancel"
   >
     <form v-on:submit.prevent="onSubmit">
-      <p v-if="error">{{ error }}</p>
       <div class="field">
         <label class="label">Email Address</label>
         <div class="control">
@@ -25,6 +24,7 @@
           <input class="input" type="password" placeholder="password" v-model="signup.password">
         </div>
       </div>
+      <p v-if="error" class="has-text-danger has-text-centered">{{ error }}</p>
     </form>
   </modal>
 </template>

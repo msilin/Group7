@@ -15,7 +15,7 @@ import axios, { AxiosResponse } from "axios";
 import { iUser, userType } from "@/models/index";
 
 import { APIConfig } from "@/utils/api.utils";
-import Profile from "@/components/Profile.vue";
+import Profile from "@/components/Employee/Profile.vue";
 
 @Component({ components: { Profile } })
 export default class EditEmployee extends Vue {

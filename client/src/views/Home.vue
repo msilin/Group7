@@ -1,6 +1,15 @@
 <template>
   <!-- This div contains the information columns. Has a div for About Us, Hours & Location, and Announcements -->
   <div id="home">
+    <div class="hero">
+      <div class="hero-body">
+        <div class="container logo">
+          <figure class="image">
+            <img src="@/assets/logo.png">
+          </figure>
+        </div>
+      </div>
+    </div>
     <div class="columns" style="padding-top: 100px;">
       <AboutUs></AboutUs>
       <Info></Info>

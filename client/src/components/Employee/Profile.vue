@@ -1,55 +1,28 @@
 <template>
   <div class="profile columns">
-    <div class="profilePhoto column">
-      <form enctype="multipart/form-data" novalidate>
-        <figure class="image" style="max-width: 30vw">
-          <img :src="profileUrl"/>
-        </figure>
-        <div class="file">
-          <label class="file-label">
-            <input
-              type="file"
-              name="profilePhoto"
-              :disabled="isSaving"
-              v-on:change="filesChanged"
-              accept="image/*"
-              class="input-file file-input"
-            >
-            <span class="file-cta">
-              <span class="file-icon">
-                <font-awesome-icon icon="upload"/>
-              </span>
-              <span class="file-label">
-                Choose a profile image…
-              </span>
-            </span>
-          </label>
-          <p v-if="isSaving">Uploading file...</p>
-        </div>
-      </form>
-    </div>
     <div class="column">
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">Name</label>
-        </div>
-        <div class="field-body">
-          <div class="control">
-            <input class="input" type="text" placeholder="first name" v-model="user.firstName">
-          </div>
-          <div class="control">
-            <input class="input" type="text" placeholder="last name" v-model="user.lastName">
-          </div>
+      <div class="field">
+        <label class="label">First Name</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="first name" v-model="user.firstName">
         </div>
       </div>
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">Email Address</label>
+      <div class="field">
+        <label class="label">Last Name</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="last name" v-model="user.lastName">
         </div>
-        <div class="field-body">
-          <div class="control">
-            <input class="input" type="email" placeholder="email address" v-model="user.emailAddress">
-          </div>
+      </div>
+      <div class="field">
+        <label class="label">Email Address</label>
+        <div class="control">
+          <input
+            class="input"
+            type="email"
+            required
+            placeholder="Email"
+            v-model="user.emailAddress"
+          >
         </div>
       </div>
       <div v-if="viewerPriveleges == 2" class="field is-horizontal">
@@ -70,19 +43,38 @@
         </div>
       </div>
       <div class="field is-horizontal">
-      <div class="field-label">
-        <!-- Left empty for spacing -->
-      </div>
-      <div class="field-body">
-        <div class="field">
-          <div class="control">
-            <button v-on:click="patchUser" class="button is-primary">
-              Save
-            </button>
-          </div>
+        <div class="control">
+          <button v-on:click="patchUser" class="button is-primary is-outlined">Save</button>
+          &nbsp;
+          <button v-on:click="cancel" class="button is-danger is-outlined">Cancel</button>
         </div>
       </div>
     </div>
+    <div class="profilePhoto column">
+      <form enctype="multipart/form-data" novalidate>
+        <figure class="image" style="max-width: 15vw">
+          <img :src="profileUrl">
+        </figure>
+        <div class="file">
+          <label class="file-label">
+            <input
+              type="file"
+              name="profilePhoto"
+              :disabled="isSaving"
+              v-on:change="filesChanged"
+              accept="image/*"
+              class="input-file file-input"
+            >
+            <span class="file-cta">
+              <span class="file-icon">
+                <font-awesome-icon icon="upload"/>
+              </span>
+              <span class="file-label">Upload Image…</span>
+            </span>
+          </label>
+          <p v-if="isSaving">Uploading file...</p>
+        </div>
+      </form>
     </div>
   </div>
 </template>
@@ -126,6 +118,10 @@ export default class Profile extends Vue {
           this.error = errorResponse.response.data.reason;
         });
     }
+  }
+
+  cancel() {
+    this.$router.back();
   }
 
   upload(formData: FormData) {

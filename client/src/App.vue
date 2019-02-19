@@ -14,7 +14,7 @@
             class="navbar-item is-tab"
             to="/status"
             exact-active-class="is-active"
-          ><font-awesome-icon class="has-text-success" icon="truck-pickup"/>&nbsp;Order Status</router-link>
+          ><font-awesome-icon class="has-text-success" icon="shipping-fast"/>&nbsp;Order Status</router-link>
         </div>
         <div class="navbar-end">
           <div class="navbar-item">
@@ -44,16 +44,6 @@
               <a class="button is-danger is-outlined" v-if="isLoggedIn" v-on:click="logout">Log out</a>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="hero">
-      <div class="hero-body">
-        <div class="container logo">
-          <figure class="image">
-            <img src="./assets/logo.png">
-          </figure>
         </div>
       </div>
     </div>

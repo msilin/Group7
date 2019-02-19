@@ -15,7 +15,7 @@ import { Component, Prop } from "vue-property-decorator";
 import axios, { AxiosResponse } from "axios";
 import { iUser } from "@/models/user.interface";
 
-import Profile from "@/components/Profile.vue";
+import Profile from "@/components/Employee/Profile.vue";
 
 @Component({ components: { Profile } })
 export default class MyProfile extends Vue {

@@ -1,8 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
-import ToDos from "./views/ToDos.vue";
-import MyProfile from "./views/MyProfile.vue";
+import MyProfile from "./views/Employee/MyProfile.vue";
 import TestShop from "./views/TestShop.vue";
 import Dashboard from "./views/Employee/Dashboard.vue";
 import EditEmployee from "./views/Employee/Edit.vue";
@@ -18,20 +17,6 @@ export default new Router({
       path: "/",
       name: "home",
       component: Home
-    },
-    {
-      path: "/about",
-      name: "about",
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () =>
-        import(/* webpackChunkName: "about" */ "./views/About.vue")
-    },
-    {
-      path: "/todos",
-      name: "todos",
-      component: ToDos
     },
     {
       path: "/my-profile",

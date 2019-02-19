@@ -1,38 +1,36 @@
 <template>
   <modal v-bind:is-showing="isShowing" title="Signup" success-button="Signup" v-on:success="success" v-on:cancel="cancel">
     <form v-on:submit.prevent="onSubmit">
-      <p v-if="error" class="is-danger">
-        {{ error }}
-      </p>
       <div class="field">
         <label class="label">First Name</label>
         <div class="control">
-          <input class="input" type="text" placeholder="first name" v-model="signup.firstName"/>
+          <input class="input" type="text" placeholder="First Name" v-model="signup.firstName"/>
         </div>
       </div>
       <div class="field">
         <label class="label">Last Name</label>
         <div class="control">
-          <input class="input" type="text" placeholder="last name" v-model="signup.lastName"/>
+          <input class="input" type="text" placeholder="Last Name" v-model="signup.lastName"/>
         </div>
       </div>
       <div class="field">
         <label class="label">Email Address</label>
         <div class="control">
-          <input class="input" type="text" placeholder="email address" v-model="signup.emailAddress"/>
+          <input class="input" type="text" placeholder="Email Address" />
         </div>
       </div>
       <div class="field">
         <label class="label">Password</label>
         <div class="control">
-          <input class="input" type="password" placeholder="password" v-model="signup.password"/>
+          <input class="input" type="password" placeholder="Password" />
         </div>
       </div>
+      <p v-if="error" class="has-text-danger has-text-centered">
+        {{ error }}
+      </p>
     </form>
   </modal>
 </template>
-
-
 
 <script lang="ts">
 import axios, { AxiosResponse } from "axios";
@@ -56,8 +54,6 @@ export default class Signup extends Vue {
 
   success() {
     this.error = false;
-    // this.signup.firstName = "done";
-    console.log("hello");
     axios
       .post(APIConfig.buildUrl("/users"), {
         ...this.signup
