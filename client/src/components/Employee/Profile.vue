@@ -1,34 +1,6 @@
 <template>
   <div class="profile columns">
-    <div class="profilePhoto column">
-      <form enctype="multipart/form-data" novalidate>
-        <div class="profilePhoto">
-          <img :src="profileUrl"/>
-        </div>
-        <div class="file">
-          <label class="file-label">
-            <input
-              type="file"
-              name="profilePhoto"
-              :disabled="isSaving"
-              v-on:change="filesChanged"
-              accept="image/*"
-              class="input-file file-input"
-            >
-            <span class="file-cta">
-              <span class="file-icon">
-                <font-awesome-icon icon="upload"/>
-              </span>
-              <span class="file-label">
-                Choose a profile image…
-              </span>
-            </span>
-          </label>
-          <p v-if="isSaving">Uploading file...</p>
-        </div>
-      </form>
-    </div>
-    <div class="profileInfo column">
+    <div class="column">
       <div class="field">
         <label class="label">First Name</label>
         <div class="control">
@@ -44,9 +16,65 @@
       <div class="field">
         <label class="label">Email Address</label>
         <div class="control">
-          <input class="input" type="text" placeholder="email address" v-model="user.emailAddress">
+          <input
+            class="input"
+            type="email"
+            required
+            placeholder="Email"
+            v-model="user.emailAddress"
+          >
         </div>
       </div>
+      <div v-if="viewerPriveleges == 2" class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">Permissions</label>
+        </div>
+        <div class="field-body">
+          <div class="control">
+            <label class="radio">
+              <input type="radio" value="2" name="permission" v-model="user.userType">
+              Admin
+            </label>
+            <label class="radio">
+              <input type="radio" value="1" name="permission" v-model="user.userType">
+              Employee
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="field is-horizontal">
+        <div class="control">
+          <button v-on:click="patchUser" class="button is-primary is-outlined">Save</button>
+          &nbsp;
+          <button v-on:click="cancel" class="button is-danger is-outlined">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <div class="profilePhoto column">
+      <form enctype="multipart/form-data" novalidate>
+        <figure class="image" style="max-width: 15vw">
+          <img :src="profileUrl">
+        </figure>
+        <div class="file">
+          <label class="file-label">
+            <input
+              type="file"
+              name="profilePhoto"
+              :disabled="isSaving"
+              v-on:change="filesChanged"
+              accept="image/*"
+              class="input-file file-input"
+            >
+            <span class="file-cta">
+              <span class="file-icon">
+                <font-awesome-icon icon="upload"/>
+              </span>
+              <span class="file-label">Upload Image…</span>
+            </span>
+          </label>
+          <p v-if="isSaving">Uploading file...</p>
+        </div>
+      </form>
     </div>
   </div>
 </template>
@@ -56,7 +84,7 @@ import axios, { AxiosResponse } from "axios";
 import Vue from "vue";
 import { Component, Prop } from "vue-property-decorator";
 import { APIConfig } from "@/utils/api.utils";
-import { iUser } from "@/models/user.interface";
+import { iUser, userType } from "@/models/index";
 
 const STATUS_INITIAL = 0;
 const STATUS_SAVING = 1;
@@ -65,13 +93,36 @@ const STATUS_FAILED = 3;
 
 @Component
 export default class Profile extends Vue {
+  error: string | boolean = false;
   fileCount: number = 0;
   currentStatus: number | null = null;
   uploadError: string | null = null;
   uploadedFile: any = null;
+  viewerPriveleges: userType = userType.ANON;
 
   @Prop({ default: null })
   user!: iUser | null;
+
+  patchUser() {
+    this.error = false;
+    if (this.user) {
+      const url = `${APIConfig.url}/users/${this.user.id}`;
+      axios
+        .patch(url, {
+          user: this.user
+        })
+        .then((response: AxiosResponse<iUser>) => {
+          this.$emit("success");
+        })
+        .catch((errorResponse: any) => {
+          this.error = errorResponse.response.data.reason;
+        });
+    }
+  }
+
+  cancel() {
+    this.$router.back();
+  }
 
   upload(formData: FormData) {
     if (this.user) {
@@ -122,6 +173,7 @@ export default class Profile extends Vue {
     // reset form to initial state
     this.currentStatus = STATUS_INITIAL;
     this.uploadError = null;
+    this.viewerPriveleges = this.$store.state.user.userType;
   }
 
   mounted() {
@@ -153,5 +205,3 @@ export default class Profile extends Vue {
   }
 }
 </script>
-<style scoped>
-</style>

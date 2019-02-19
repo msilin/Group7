@@ -26,7 +26,7 @@ export class AnnouncementController extends DefaultController {
         const newAnnouncement = {
             content: newContent,
             datePosted: new Date(),
-            imageUrl: newImageUrl,
+            // imageUrl: newImageUrl,
             title: newTitle,
         };
         announcementRepo.save(newAnnouncement).then((savedAnnouncement: Announcement) => {

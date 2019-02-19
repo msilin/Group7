@@ -1,43 +1,53 @@
 <template>
   <div id="app">
     <!-- This div contains Order Status button, Title, navbar, and signin button -->
-    <div
-      style="display:flex; justify-content:space-evenly; align-items:
-            center; padding-top: 40px;"
-    >
-      <button style="height: 40px; width: 80px">ORDER STATUS</button>
-      <div>
-        <img src="./assets/foxCycleLogo.png">
-      </div>
-      <button style="height: 40px; width: 80px">SIGN IN</button>
-    </div>
-    <div style="display: flex; justify-content: center; padding-bottom: 40px;">
-      <div style="width: auto">
-        <div class="navbar" role="navigation" aria-label="main navigation">
-          <div class="navbar-menu">
-            <div class="navbar-start" style="display: flex; justify-content: center">
+    <div class="navbar is-white has-shadow" role="navigation">
+      <div class="navbar-menu">
+        <div class="navbar-start">
+          <router-link class="navbar-item is-tab" to="/">
+            <font-awesome-icon class="has-text-info" icon="home"/>&nbsp;Home
+          </router-link>
+          <router-link class="navbar-item is-tab" to="/testshop" exact-active-class="is-active">
+            <font-awesome-icon class="has-text-link" icon="store"/>&nbsp;Shop
+          </router-link>
+          <router-link
+            class="navbar-item is-tab"
+            to="/status"
+            exact-active-class="is-active"
+          ><font-awesome-icon class="has-text-success" icon="shipping-fast"/>&nbsp;Order Status</router-link>
+        </div>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-success is-outlined" v-if="!isLoggedIn" v-on:click="showSignupModal">
+                <strong>Sign Up</strong>
+              </a>
               <router-link
-                style="padding: 20px"
-                to="/"
+                class="button is-success is-outlined"
+                v-if="isLoggedIn"
+                to="/my-profile"
                 exact-active-class="is-active"
-              >Home</router-link>
+              >My Profile</router-link>
               <router-link
-                style="padding: 20px"
-                class="navbar-item is-tab"
-                to="/testshop"
+                class="button is-link is-outlined"
+                v-if="userType == 1"
+                to="/employee/dashboard"
                 exact-active-class="is-active"
-              >Store</router-link>
+              >Dashboard</router-link>
               <router-link
-                style="padding: 20px"
-                class="navbar-item is-tab"
-                to="/services"
+                class="button is-link is-outlined"
+                v-if="userType == 2"
+                to="/admin/dashboard"
                 exact-active-class="is-active"
-              >Services</router-link>
+              >Dashboard</router-link>
+              <a class="button is-info is-outlined" v-if="!isLoggedIn" v-on:click="showLoginModal()">Log in</a>
+              <a class="button is-danger is-outlined" v-if="isLoggedIn" v-on:click="logout">Log out</a>
             </div>
           </div>
         </div>
       </div>
     </div>
+
     <router-view class="container"/>
     <Signup
       v-bind:is-showing="showSignup"
@@ -55,6 +65,7 @@ import { Component } from "vue-property-decorator";
 import Signup from "@/components/Signup.vue";
 import Login from "@/components/Login.vue";
 import { APIConfig } from "@/utils/api.utils";
+import { userType } from "@/models";
 
 @Component({
   components: {
@@ -94,6 +105,13 @@ export default class App extends Vue {
     return !!this.$store.state.user;
   }
 
+  get userType(): userType {
+    let t: userType = this.$store.state.user
+      ? this.$store.state.user.userType
+      : undefined;
+    return t ? t : userType.ANON;
+  }
+
   logout() {
     axios
       .post(APIConfig.buildUrl("/logout"), null, {
@@ -115,5 +133,9 @@ export default class App extends Vue {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+}
+
+.logo {
+  max-width: 400px;
 }
 </style>

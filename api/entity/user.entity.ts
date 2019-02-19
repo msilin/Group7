@@ -27,12 +27,6 @@ export class User {
   @Index({ unique: true })
   public emailAddress!: string;
 
-  @Column()
-  public accountType: AccountType = AccountType.EMPLOYEE;
-}
-
-export enum AccountType {
-  EMPLOYEE,
-  CUSTOMER,
-  ADMIN,
+  @Column({default: userType.EMPLOYEE})
+  public userType!: userType;
 }

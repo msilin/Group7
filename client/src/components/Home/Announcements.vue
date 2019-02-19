@@ -1,7 +1,7 @@
 <template>
-    <div id="announcements" class="h-column column">
-        <h1 class="title">Announcements</h1>
-        <div class="scrollable">
+    <div id="announcements" class="column">
+        <h1 class="title has-text-centered">Announcements</h1>
+        <div class="box scrollable">
           <Announcement 
             v-for="a in announcements" 
             :key="a.id"
@@ -54,4 +54,3 @@ interface AnnouncementResponse {
   height: 700px;
 }
 </style>
-
