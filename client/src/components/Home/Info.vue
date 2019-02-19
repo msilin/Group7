@@ -1,7 +1,7 @@
 <template>
-  <div id="home-info" class="h-column column-center column">
-    <h1 class="title">Store Info</h1>
-    <article class="home-entry message is-info">
+  <div id="home-info" class="column">
+    <h1 class="title has-text-centered">Store Info</h1>
+    <article class="message is-info">
         <div class="message-header">Hours</div>
         <div class="messsage-body" style="padding: 25px;">
             <p>Monday to Friday 10 AM - 6 PM</p>

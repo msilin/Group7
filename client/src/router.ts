@@ -4,6 +4,7 @@ import Home from "./views/Home.vue";
 import ToDos from "./views/ToDos.vue";
 import MyProfile from "./views/MyProfile.vue";
 import TestShop from "./views/TestShop.vue";
+import Dashboard from "./views/Employee/Dashboard.vue";
 
 Vue.use(Router);
 
@@ -39,6 +40,11 @@ export default new Router({
       path: "/testshop",
       name: "testshop",
       component: TestShop
+    },
+    {
+      path: "/employee/dashboard",
+      name: "dashboard",
+      component: Dashboard
     }
   ]
 });

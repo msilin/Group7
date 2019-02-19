@@ -7,14 +7,17 @@ export class OrderItem {
   @PrimaryGeneratedColumn()
   public id!: number;
 
-  @Column()
-  public quantity: number = 0;
+  @Column({ default: 0})
+  public quantity!: number;
 
-  @Column()
-  public isPickup: boolean = false;
+  @Column({ default: false})
+  public isPickup!: boolean;
 
   @Column()
   public shippingAddress!: string;
+
+  @Column()
+  public trackingNumber!: number;
 
   @OneToOne((type) => Item, {cascade: false})
   @JoinColumn()

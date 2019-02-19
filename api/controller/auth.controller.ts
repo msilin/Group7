@@ -16,7 +16,7 @@ export class AuthController extends DefaultController {
         const token = req.get("token");
 
         sessionRepo.findOneOrFail(token, {relations: ["user"]}).then((foundSession: Session) => {
-            res.locals.userType = foundSession.user.type;
+            res.locals.userType = foundSession.user.userType;
             res.locals.userId = foundSession.user.id;
             next();
         }).catch(() => {

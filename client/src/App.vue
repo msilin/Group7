@@ -1,43 +1,42 @@
 <template>
   <div id="app">
     <!-- This div contains Order Status button, Title, navbar, and signin button -->
-    <div
-      style="display:flex; justify-content:space-evenly; align-items:
-            center; padding-top: 40px;"
-    >
-      <button style="height: 40px; width: 80px">ORDER STATUS</button>
-      <figure class="image" style="width: 30%;">
-        <img src="./assets/logo.png" style="width: auto; height: auto; position: relative;">  
-      </figure>
-      <button style="height: 40px; width: 80px">SIGN IN</button>
-    </div>
-    <div style="display: flex; justify-content: center; padding-bottom: 40px;">
-      <div style="width: auto">
-        <div class="navbar" role="navigation" aria-label="main navigation">
-          <div class="navbar-menu">
-            <div class="navbar-start" style="display: flex; justify-content: center">
-              <router-link
-                style="padding: 20px"
-                to="/"
-                exact-active-class="is-active"
-              >Home</router-link>
-              <router-link
-                style="padding: 20px"
-                class="navbar-item is-tab"
-                to="/testshop"
-                exact-active-class="is-active"
-              >Store</router-link>
-              <router-link
-                style="padding: 20px"
-                class="navbar-item is-tab"
-                to="/services"
-                exact-active-class="is-active"
-              >Services</router-link>
-            </div>
+    <div class="navbar is-info" role="navigation">
+      <div class="navbar-menu">
+        <div class="navbar-start">
+          <router-link class="navbar-item is-tab" to="/">Home</router-link>
+          <router-link class="navbar-item is-tab" to="/testshop" exact-active-class="is-active">Shop</router-link>
+          <router-link class="navbar-item is-tab" to="/status" exact-active-class="is-active">Order Status</router-link>
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-primary" v-if="!isLoggedIn" v-on:click="showSignupModal">
+              <strong>Sign Up</strong>
+            </a>
+            <router-link
+              class="button is-text"
+              v-if="isLoggedIn"
+              to="/my-profile"
+              exact-active-class="is-active">My Profile</router-link>
+            <a class="button is-light" v-if="!isLoggedIn" v-on:click="showLoginModal()">Log in</a>
+            <a class="button is-light" v-if="isLoggedIn" v-on:click="logout">Log out</a>
           </div>
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-body">
+      <div class="container logo">
+        <figure class="image">
+          <img src="./assets/logo.png">  
+        </figure>
+      </div>
+    </div>
+  </div>
+
     <router-view class="container"/>
     <Signup
       v-bind:is-showing="showSignup"
@@ -115,5 +114,9 @@ export default class App extends Vue {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+}
+
+.logo {
+  max-width: 400px;
 }
 </style>

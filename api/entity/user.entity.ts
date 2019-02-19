@@ -28,5 +28,5 @@ export class User {
   public emailAddress!: string;
 
   @Column({default: userType.EMPLOYEE})
-  public type!: userType;
+  public userType!: userType;
 }

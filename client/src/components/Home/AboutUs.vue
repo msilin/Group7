@@ -1,7 +1,7 @@
 <template>
-  <div id="about-us" class="h-column column">
-    <h1 class="title">About Us</h1>
-    <article class="home-entry message is-info">
+  <div id="about-us" class="column">
+    <h1 class="title has-text-centered">About Us</h1>
+    <article class="message is-info">
         <div class="messsage-body" style="padding: 25px;">
             <figure class="media-left">
                 <p class="image is-183x275">

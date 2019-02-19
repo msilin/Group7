@@ -1,6 +1,6 @@
 <template>
-    <div id="announcements" class="h-column column">
-        <h1 class="title">Announcements</h1>
+    <div id="announcements" class="column">
+        <h1 class="title has-text-centered">Announcements</h1>
         <div class="scrollable">
           <Announcement 
             v-for="a in announcements" 
