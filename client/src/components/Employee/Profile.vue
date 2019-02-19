@@ -76,6 +76,65 @@
         </div>
       </form>
     </div>
+<<<<<<< HEAD:client/src/components/Employee/Profile.vue
+=======
+    <div class="column">
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">Name</label>
+        </div>
+        <div class="field-body">
+          <div class="control">
+            <input class="input" type="text" placeholder="first name" v-model="user.firstName">
+          </div>
+          <div class="control">
+            <input class="input" type="text" placeholder="last name" v-model="user.lastName">
+          </div>
+        </div>
+      </div>
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">Email Address</label>
+        </div>
+        <div class="field-body">
+          <div class="control">
+            <input class="input" type="email" placeholder="email address" v-model="user.emailAddress">
+          </div>
+        </div>
+      </div>
+      <div v-if="viewerPriveleges == 2" class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">Permissions</label>
+        </div>
+        <div class="field-body">
+          <div class="control">
+            <label class="radio">
+              <input type="radio" value="2" name="permission" v-model="user.userType">
+              Admin
+            </label>
+            <label class="radio">
+              <input type="radio" value="1" name="permission" v-model="user.userType">
+              Employee
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="field is-horizontal">
+      <div class="field-label">
+        <!-- Left empty for spacing -->
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <div class="control">
+            <button v-on:click="patchUser" class="button is-primary">
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+>>>>>>> 4dba3cc630504655192b3bea5271df608abb4a43:client/src/components/Profile.vue
   </div>
 </template>
 
@@ -120,10 +179,13 @@ export default class Profile extends Vue {
     }
   }
 
+<<<<<<< HEAD:client/src/components/Employee/Profile.vue
   cancel() {
     this.$router.back();
   }
 
+=======
+>>>>>>> 4dba3cc630504655192b3bea5271df608abb4a43:client/src/components/Profile.vue
   upload(formData: FormData) {
     if (this.user) {
       const url = `${APIConfig.url}/users/${this.user.id}`;
