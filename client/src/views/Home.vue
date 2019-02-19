@@ -1,7 +1,7 @@
 <template>
   <!-- This div contains the information columns. Has a div for About Us, Hours & Location, and Announcements -->
   <div id="home">
-    <div class="columns">
+    <div class="columns" style="padding-top: 100px;">
       <AboutUs></AboutUs>
       <Info></Info>
       <HomeAnnouncements></HomeAnnouncements>

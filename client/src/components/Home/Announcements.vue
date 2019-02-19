@@ -1,7 +1,7 @@
 <template>
     <div id="announcements" class="column">
         <h1 class="title has-text-centered">Announcements</h1>
-        <div class="scrollable">
+        <div class="box scrollable">
           <Announcement 
             v-for="a in announcements" 
             :key="a.id"
