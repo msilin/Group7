@@ -54,4 +54,3 @@ interface AnnouncementResponse {
   height: 700px;
 }
 </style>
-

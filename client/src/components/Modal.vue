@@ -10,8 +10,8 @@
         <slot/>
       </section>
       <footer class="modal-card-foot">
-        <button class="button is-success" v-on:click="successHandler()">{{ successButton }}</button>
-        <button class="button" v-on:click="cancelHandler()">Cancel</button>
+        <button class="button is-success is-outlined" v-on:click="successHandler()">{{ successButton }}</button>
+        <button class="button is-danger is-outlined" v-on:click="cancelHandler()">Cancel</button>
       </footer>
     </div>
   </div>

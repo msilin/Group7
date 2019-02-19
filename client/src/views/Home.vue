@@ -12,8 +12,8 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import HomeAnnouncements from "@/components/Home/Announcements.vue";
-import AboutUs from '@/components/Home/AboutUs.vue';
-import Info from '@/components/Home/Info.vue'
+import AboutUs from "@/components/Home/AboutUs.vue";
+import Info from "@/components/Home/Info.vue";
 
 @Component({
   components: {

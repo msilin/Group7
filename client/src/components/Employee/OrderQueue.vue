@@ -18,20 +18,20 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import Vue from "vue";
 import { Component, Prop } from "vue-property-decorator";
 
 import axios, { AxiosResponse } from "axios";
-import { userType, iOrder, iUser} from "@/models/index";
+import { userType, iOrder, iUser } from "@/models/index";
 
 export default class OrderQueue extends Vue {
-    @Prop() orders!: iOrder;
+  @Prop() orders!: iOrder;
 
-    get user(): iUser {
-        return this.$store.state.user;
-    }
-    get uType() {
-        return user.userType;
-    }
+  get user(): iUser {
+    return this.$store.state.user;
+  }
+  get uType() {
+    return this.user.userType;
+  }
 }
 </script>
