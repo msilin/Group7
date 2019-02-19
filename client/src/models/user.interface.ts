@@ -1,4 +1,4 @@
-import { userType } from '@/models/userType.enum';
+import { userType } from "@/models/userType.enum";
 
 export interface iUser {
   firstName: string;

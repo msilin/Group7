@@ -20,19 +20,20 @@ export class UserController extends DefaultController {
       })
       .post((req: Request, res: Response) => {
         const userRepo = getRepository(User);
-        const { firstName, lastName, emailAddress, password } = req.body;
+        const { firstName, lastName, emailAddress, password, userType } = req.body;
         const user = new User();
         user.firstName = firstName;
         user.lastName = lastName;
         user.emailAddress = emailAddress;
         user.password = password;
+        user.userType = userType;
         userRepo.save(user).then(
-          createdUser => {
+          (createdUser) => {
             res.status(200).send({ createdUser });
           },
           (reason: any) => {
             res.status(500).send({ reason: "The email was not unique" });
-          }
+          },
         );
       });
     router.route("/users/:id").post(
@@ -57,8 +58,7 @@ export class UserController extends DefaultController {
           }
         });
       }
-    );
-    router.route("/users/:id").get((req: Request, res: Response) => {
+    ).get((req: Request, res: Response) => {
       const userRepo = getRepository(User);
       userRepo.findOne(req.params.id).then(
         (user: User | undefined) => {
@@ -72,6 +72,16 @@ export class UserController extends DefaultController {
           res.sendStatus(404);
         }
       );
+    }).patch((req: Request, res: Response) => {
+      const userRepo = getRepository(User);
+      const { user } = req.body;
+      userRepo.save(user).then((foundUser: User | undefined) => {
+        if (user) {
+          res.send({ foundUser });
+        } else {
+          res.sendStatus(500);
+        }
+      })
     });
     return router;
   }

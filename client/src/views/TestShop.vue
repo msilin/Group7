@@ -79,4 +79,3 @@ export default class TestShop extends Vue {
   ];
 }
 </script>
-
