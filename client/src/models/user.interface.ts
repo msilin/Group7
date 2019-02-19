@@ -1,3 +1,5 @@
+import { userType } from '@/models/userType.enum';
+
 export interface iUser {
   firstName: string;
   lastName: string;
@@ -5,4 +7,5 @@ export interface iUser {
   password: string;
   id: number;
   profileUrl: string;
+  userType: userType;
 }
