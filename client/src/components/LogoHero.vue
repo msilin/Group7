@@ -3,7 +3,11 @@
       <div class="hero-body">
         <div class="container logo">
           <figure class="image">
-            <img src="@/assets/logo.png">
+            <router-link
+                to="/"
+                exact-active-class="is-active">
+              <img src="@/assets/logo.png">
+            </router-link>
           </figure>
         </div>
       </div>
