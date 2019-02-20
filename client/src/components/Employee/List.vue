@@ -3,10 +3,10 @@
         <table class="table is-hoverable is-fullwidth">
             <thead>
                 <tr>
-                    <th><abbr title="Id">Id</abbr></th>
-                    <th><abbr title="LastName">Last Name</abbr></th>
-                    <th><abbr title="FirstName">First Name</abbr></th>
-                    <th><abbr title="Permissions">Permissions</abbr></th>
+                    <th>Id</abbr></th>
+                    <th>Last Name</th>
+                    <th>First Name</th>
+                    <th>Permissions</th>
                     <th>Edit</th>
                 </tr>
             </thead>

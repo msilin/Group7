@@ -4,15 +4,9 @@
       <table class="table is-hoverable is-fullwidth">
         <thead>
           <tr>
-            <th>
-              <abbr title="Title">Title</abbr>
-            </th>
-            <th>
-              <abbr title="date">Date</abbr>
-            </th>
-            <th>
-              <abbr title="content">Content</abbr>
-            </th>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Content</th>
             <th></th>
           </tr>
         </thead>
