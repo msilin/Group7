@@ -81,11 +81,7 @@ export class UserController extends DefaultController {
         } else {
           res.sendStatus(500);
         }
-<<<<<<< HEAD
       });
-=======
-      })
->>>>>>> 4dba3cc630504655192b3bea5271df608abb4a43
     });
     return router;
   }
