@@ -1,11 +1,15 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
-import MyProfile from "./views/Employee/MyProfile.vue";
 import TestShop from "./views/TestShop.vue";
-import Dashboard from "./views/Employee/Dashboard.vue";
-import EditEmployee from "./views/Employee/Edit.vue";
-import AdminDashboard from "./views/Employee/AdminDashboard.vue";
+import Dashboard from "./views/Dashboard/Dashboard.vue";
+import Announcements from "./views/Dashboard/Announcements.vue";
+import Employees from "./views/Dashboard/Employees.vue";
+import Products from "./views/Dashboard/Products.vue";
+import Profile from "./views/Dashboard/Profile.vue";
+import Services from "./views/Dashboard/Services.vue";
+import EditEmployeePage from "./views/Dashboard/EditEmployee.vue";
+
 
 Vue.use(Router);
 
@@ -19,30 +23,45 @@ export default new Router({
       component: Home
     },
     {
-      path: "/my-profile",
-      name: "myProfile",
-      component: MyProfile
-    },
-    {
       path: "/testshop",
       name: "testshop",
       component: TestShop
     },
     {
-      path: "/employee/dashboard",
-      name: "dashboard",
-      component: Dashboard
-    },
-    {
-      path: "/admin/dashboard",
-      name: "admin-dashboard",
-      component: AdminDashboard
-    },
-    {
-      path: "/employee/edit/:id",
-      name: "editEmployee",
-      component: EditEmployee,
-      props: true
+      path: "/dashboard",
+      component: Dashboard,
+      children: [
+        {
+          path: "",
+          name: "dashboard",
+          redirect: "/dashboard/profile"
+        },
+        {
+          path: "profile",
+          component: Profile
+        },
+        {
+          path: "products",
+          component: Products
+        },
+        {
+          path: "services",
+          component: Services
+        },
+        {
+          path: "announcements",
+          component: Announcements
+        },
+        {
+          path: "employees",
+          component: Employees
+        },
+        {
+          path: "employee/:id",
+          component: EditEmployeePage
+        }
+
+      ]
     }
   ]
 });

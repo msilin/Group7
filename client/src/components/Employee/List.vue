@@ -58,10 +58,7 @@ export default class EmployeeList extends Vue {
   }
 
   edit(u: iUser): void {
-    this.$router.replace({
-      name: "editEmployee",
-      params: { id: `${u.id}` }
-    });
+    this.$router.push(`/dashboard/employee/${u.id}`);
   }
 }
 
