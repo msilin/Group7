@@ -1,5 +1,5 @@
 <template>
-  <div class="profile columns">
+  <div class="edit columns">
     <div class="column">
       <div class="field">
         <label class="label">First Name</label>
@@ -48,7 +48,7 @@
     </div>
     <div class="profilePhoto column">
       <form enctype="multipart/form-data" novalidate>
-        <figure class="image" style="max-width: 15vw">
+        <figure v-if="profileUrl!==''" class="image" style="max-width: 15vw">
           <img :src="profileUrl">
         </figure>
         <div class="file">
@@ -88,7 +88,7 @@ const STATUS_SUCCESS = 2;
 const STATUS_FAILED = 3;
 
 @Component
-export default class Profile extends Vue {
+export default class EditEmployee extends Vue {
   error: string | boolean = false;
   fileCount: number = 0;
   currentStatus: number | null = null;
@@ -109,6 +109,7 @@ export default class Profile extends Vue {
         })
         .then((response: AxiosResponse<iUser>) => {
           this.$emit("success");
+          this.$router.back();
         })
         .catch((errorResponse: any) => {
           this.error = errorResponse.response.data.reason;
@@ -194,7 +195,7 @@ export default class Profile extends Vue {
   }
 
   get profileUrl(): string {
-    if (this.user) {
+    if (this.user && this.user.profileUrl && this.user.profileUrl !== "") {
       return APIConfig.buildUrl(`/${this.user.profileUrl}`);
     }
     return "";

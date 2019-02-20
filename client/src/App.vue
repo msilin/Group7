@@ -23,21 +23,9 @@
                 <strong>Sign Up</strong>
               </a>
               <router-link
-                class="button is-success is-outlined"
+                class="button is-link is-outlined"
                 v-if="isLoggedIn"
-                to="/my-profile"
-                exact-active-class="is-active"
-              >My Profile</router-link>
-              <router-link
-                class="button is-link is-outlined"
-                v-if="userType == 1"
-                to="/employee/dashboard"
-                exact-active-class="is-active"
-              >Dashboard</router-link>
-              <router-link
-                class="button is-link is-outlined"
-                v-if="userType == 2"
-                to="/admin/dashboard"
+                to="/dashboard"
                 exact-active-class="is-active"
               >Dashboard</router-link>
               <a class="button is-info is-outlined" v-if="!isLoggedIn" v-on:click="showLoginModal()">Log in</a>
