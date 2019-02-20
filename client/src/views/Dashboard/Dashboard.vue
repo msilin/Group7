@@ -16,15 +16,17 @@
               <router-link to="/dashboard/services">Services</router-link>
             </li>
           </ul>
-          <p class="menu-label">Administration</p>
-          <ul class="menu-list">
-            <li>
-              <router-link to="/dashboard/announcements">Announcements</router-link>
-            </li>
-            <li>
-              <router-link to="/dashboard/employees">Employees</router-link>
-            </li>
-          </ul>
+          <span v-if="userType === 2">
+            <p class="menu-label">Administration</p>
+            <ul class="menu-list">
+              <li>
+                <router-link to="/dashboard/announcements">Announcements</router-link>
+              </li>
+              <li>
+                <router-link to="/dashboard/employees">Employees</router-link>
+              </li>
+            </ul>
+          </span>
         </aside>
       </div>
       <div class="column">
@@ -56,13 +58,13 @@ import MiniProfile from "@/components/Employee/MiniProfile.vue";
 })
 export default class Dashboard extends Vue {
   pageName: string | null = null;
-  
+
   mounted() {
     if (!this.$store.state.user) {
       this.$router.push({ name: "home" });
       return;
     }
-    console.log(this.$route)
+    console.log(this.$route);
     this.pageName = this.getPageFromRoute(this.$route.path);
   }
 
@@ -72,12 +74,16 @@ export default class Dashboard extends Vue {
 
   getPageFromRoute(path: string): string {
     const s: string[] = path.split("/");
-    const page = s[s.length-1]
-    return (page.charAt(0).toUpperCase() + page.slice(1));
+    const page = s[s.length - 1];
+    return page.charAt(0).toUpperCase() + page.slice(1);
   }
 
   get user() {
     return this.$store.state.user;
+  }
+
+  get userType() {
+    return this.$store.state.user.userType;
   }
 }
 </script>
