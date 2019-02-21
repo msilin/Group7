@@ -1,3 +1,5 @@
+import { iCategory } from './category.interface';
+
 export interface iItem {
     id: number;
     name: string;
@@ -7,4 +9,5 @@ export interface iItem {
     inStore: boolean;
     canShip: boolean;
     stock: number;
+    categories: iCategory[];
 }

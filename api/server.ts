@@ -3,6 +3,7 @@ import express from "express";
 import { AnnouncementController, AuthController, LoginController, UserController, ItemController, ServiceController } from "./controller";
 
 import { DBConnection } from "./connection";
+import { CategoryController } from "./controller/category.controller";
 
 export class Server {
   private myApp: Promise<express.Application>;
@@ -26,6 +27,7 @@ export class Server {
       app.use("/", new AnnouncementController().router);
       app.use("/", new ItemController().router);
       app.use("/", new ServiceController().router);
+      app.use("/", new CategoryController().router);
 
       return app;
     });

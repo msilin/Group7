@@ -5,6 +5,5 @@ export * from "./status.entity";
 export * from "./order_item.entity";
 export * from "./item.entity";
 export * from "./category.entity";
-export * from "./item_category.entity";
 export * from "./announcement.entity";
 export * from "./service.entity";
