@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
-import TestShop from "./views/TestShop.vue";
+import Shop from "./views/Shop.vue";
 import Dashboard from "./views/Dashboard/Dashboard.vue";
 import Announcements from "./views/Dashboard/Announcements.vue";
 import Employees from "./views/Dashboard/Employees.vue";
@@ -9,7 +9,7 @@ import Products from "./views/Dashboard/Products.vue";
 import Profile from "./views/Dashboard/Profile.vue";
 import Services from "./views/Dashboard/Services.vue";
 import EditEmployeePage from "./views/Dashboard/EditEmployee.vue";
-
+import ServicesPage from "./views/ServicesPage.vue"
 
 Vue.use(Router);
 
@@ -23,9 +23,14 @@ export default new Router({
       component: Home
     },
     {
-      path: "/testshop",
-      name: "testshop",
-      component: TestShop
+      path: "/shop",
+      name: "shop",
+      component: Shop
+    },
+    {
+      path: "/services",
+      name: "services",
+      component: ServicesPage
     },
     {
       path: "/dashboard",
