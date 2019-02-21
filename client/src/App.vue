@@ -19,9 +19,6 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <a class="button is-success is-outlined" v-if="!isLoggedIn" v-on:click="showSignupModal">
-                <strong>Sign Up</strong>
-              </a>
               <router-link
                 class="button is-link is-outlined"
                 v-if="isLoggedIn"
@@ -37,11 +34,6 @@
     </div>
 
     <router-view class="container"/>
-    <Signup
-      v-bind:is-showing="showSignup"
-      v-on:success="successSignup()"
-      v-on:cancel="cancelSignup()"
-    />
     <Login v-bind:is-showing="showLogin" v-on:success="successLogin()" v-on:cancel="cancelLogin()"/>
   </div>
 </template>
@@ -121,6 +113,11 @@ export default class App extends Vue {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+}
+
+.scrollable {
+  overflow-y: scroll;
+  height: 400px;
 }
 
 .logo {

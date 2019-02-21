@@ -1,7 +1,7 @@
 <template>
   <div id="home">
     <LogoHero></LogoHero>
-    <div class="columns" style="padding-top: 100px;">
+    <div class="columns">
       <AboutUs></AboutUs>
       <Info></Info>
       <HomeList></HomeList>
