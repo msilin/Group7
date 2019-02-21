@@ -38,6 +38,19 @@ export class ItemController extends DefaultController {
                 res.status(200).send(foundItem);
             })
         })
+        .put((req: Request, res: Response) => {
+            const itemRepo = getRepository(Item)
+            const updatedItem: Item = req.body
+            itemRepo.findOne(updatedItem.id).then((foundItem: Item | undefined) => {
+                if (foundItem) {
+                    itemRepo.save(updatedItem).then((savedItem: Item) => {
+                        res.status(200).send(savedItem)
+                    })
+                } else {
+                    res.status(404).send("Cannot update nonexistent item")
+                }
+            })
+        })
 
         return router;
     }
