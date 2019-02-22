@@ -1,9 +1,9 @@
 import DefaultController from "./default.controller";
 
-import { NextFunction, Request, Response, Router } from "express";
+import { Request, Response } from "express";
 import express from "express";
 
-import { Item, Category } from "../entity";
+import { Category } from "../entity";
 
 import { getRepository } from "typeorm";
 
