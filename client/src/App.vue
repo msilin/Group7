@@ -5,10 +5,13 @@
       <div class="navbar-menu">
         <div class="navbar-start">
           <router-link class="navbar-item is-tab" to="/">
-            <font-awesome-icon class="has-text-info" icon="home"/>&nbsp;Home
+            <font-awesome-icon class="has-text-link" icon="home"/>&nbsp;Home
           </router-link>
-          <router-link class="navbar-item is-tab" to="/testshop" exact-active-class="is-active">
-            <font-awesome-icon class="has-text-link" icon="store"/>&nbsp;Shop
+          <router-link class="navbar-item is-tab" to="/shop" exact-active-class="is-active">
+            <font-awesome-icon class="has-text-info" icon="store"/>&nbsp;Shop
+          </router-link>
+          <router-link class="navbar-item is-tab" to="/services" exact-active-class="is-active">
+            <font-awesome-icon class="has-text-primary" icon="wrench"/>&nbsp;Services
           </router-link>
           <router-link
             class="navbar-item is-tab"
@@ -35,6 +38,9 @@
 
     <router-view class="container"/>
     <Login v-bind:is-showing="showLogin" v-on:success="successLogin()" v-on:cancel="cancelLogin()"/>
+    <footer class="footer">
+      <p class="content has-text-centered">Group VII baby</p>
+    </footer>
   </div>
 </template>
 

@@ -14,7 +14,8 @@ import {
   faShippingFast,
   faEdit,
   faTrash,
-  faUserCircle
+  faUserCircle,
+  faWrench
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -28,7 +29,8 @@ library.add(
   faHome,
   faStore,
   faShippingFast,
-  faUserCircle
+  faUserCircle,
+  faWrench
 );
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
