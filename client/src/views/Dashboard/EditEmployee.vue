@@ -20,12 +20,13 @@ import EditEmployee from "@/components/Employee/Edit.vue";
 })
 export default class EditEmployeePage extends Vue {
   user: iUser | null = null;
+  @Prop({default: null}) id!: string;
 
   mounted() {
-      this.fetchUser(this.$route.params.id);
+      this.fetchUser(+this.id);
   }
 
-  fetchUser(id: string) {
+  fetchUser(id: number) {
     axios
       .get(APIConfig.buildUrl(`/users/${id}`))
       .then((res: AxiosResponse<{ user: iUser }>) => {

@@ -4,8 +4,8 @@
     <div class="navbar is-white has-shadow" role="navigation">
       <div class="navbar-menu">
         <div class="navbar-start">
-          <router-link class="navbar-item is-tab" to="/">
-            <font-awesome-icon class="has-text-link" icon="home"/>&nbsp;Home
+          <router-link class="navbar-item is-tab" exact-active-class="is-active" to="/">
+            <font-awesome-icon class="has-text-info" icon="home"/>&nbsp;Home
           </router-link>
           <router-link class="navbar-item is-tab" to="/shop" exact-active-class="is-active">
             <font-awesome-icon class="has-text-info" icon="store"/>&nbsp;Shop
@@ -13,22 +13,31 @@
           <router-link class="navbar-item is-tab" to="/services" exact-active-class="is-active">
             <font-awesome-icon class="has-text-primary" icon="wrench"/>&nbsp;Services
           </router-link>
-          <router-link
-            class="navbar-item is-tab"
-            to="/status"
-            exact-active-class="is-active"
-          ><font-awesome-icon class="has-text-success" icon="shipping-fast"/>&nbsp;Order Status</router-link>
+          <router-link class="navbar-item is-tab" to="/status" exact-active-class="is-active">
+            <font-awesome-icon class="has-text-success" icon="shipping-fast"/>&nbsp;Order Status
+          </router-link>
         </div>
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
+              <a
+                class="button is-success is-outlined"
+                v-if="!isLoggedIn"
+                v-on:click="showSignupModal"
+              >
+                <strong>Sign Up</strong>
+              </a>
               <router-link
                 class="button is-link is-outlined"
                 v-if="isLoggedIn"
                 to="/dashboard"
                 exact-active-class="is-active"
               >Dashboard</router-link>
-              <a class="button is-info is-outlined" v-if="!isLoggedIn" v-on:click="showLoginModal()">Log in</a>
+              <a
+                class="button is-info is-outlined"
+                v-if="!isLoggedIn"
+                v-on:click="showLoginModal()"
+              >Log in</a>
               <a class="button is-danger is-outlined" v-if="isLoggedIn" v-on:click="logout">Log out</a>
             </div>
           </div>

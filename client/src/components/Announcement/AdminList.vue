@@ -11,12 +11,19 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(a, index) in announcementList" v-bind:key="index">
+          <tr v-for="(a, index) in announcements" v-bind:key="index">
             <td>{{a.title}}</td>
             <td>{{formattedDate(index)}}</td>
             <td>{{a.content}}</td>
             <td>
-              <button class="button is-danger is-outlined is-small" v-on:click="deleteAnnouncement(a)">
+              <button class="button is-info is-outlined is-small" v-on:click="$emit('edit', a)">
+                <font-awesome-icon class="icon" icon="edit"></font-awesome-icon>
+              </button>
+              &nbsp;
+              <button
+                class="button is-danger is-outlined is-small"
+                v-on:click="$emit('delete', a)"
+              >
                 <font-awesome-icon class="icon" icon="trash"></font-awesome-icon>
               </button>
             </td>
@@ -43,47 +50,14 @@ import { formatDate } from "@/utils/date.utils";
 @Component
 export default class AdminList extends Vue {
   error: string | boolean = false;
-  announcementList: iAnnouncement[] = [];
-
-  created() {
-    this.loadAnnouncements();
-  }
-
-  loadAnnouncements() {
-    if (!this.$store.state.announcements) {
-      this.$store
-        .dispatch("fetchAnnouncements")
-        .then((lst: iAnnouncement[]) => {
-          this.announcementList = lst;
-        });
-    } else {
-      this.announcementList = this.announcements;
-    }
-  }
-
-  deleteAnnouncement(a: iAnnouncement) {
-    this.$store.dispatch("deleteAnnouncement", { id: a.id });
-  }
-
-  get announcements(): iAnnouncement[] {
-    return this.$store.state.announcements;
-  }
-
+  @Prop({default: false}) announcements!: iAnnouncement[] | false;
+  
   formattedDate(index: number): string {
-    return formatDate(this.announcements[index].datePosted);
+    if(this.announcements){
+     return formatDate(this.announcements[index].datePosted);
+    }
+    return "";
   }
-
-  @Watch("announcements")
-  handleAnnouncementsChange(
-    newList: iAnnouncement[],
-    oldList: iAnnouncement[]
-  ) {
-    this.announcementList = newList;
-  }
-}
-
-interface AnnouncementResponse {
-  announcements: iAnnouncement[];
 }
 </script>
 
