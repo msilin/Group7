@@ -26,20 +26,29 @@ export default class HomeList extends Vue {
   announcements: iAnnouncement[] = [];
   error: string | boolean = false;
 
-  created() {
-    this.loadAnnouncements();
+  mounted() {
+    this.fetchAnnouncements();
   }
 
-  loadAnnouncements() {
-    if (!this.$store.state.announcements) {
-      this.$store
-        .dispatch("fetchAnnouncements")
-        .then((lst: iAnnouncement[]) => {
-          this.announcements = lst;
-        });
-    } else {
-      this.announcements = this.$store.state.announcements;
-    }
+  fetchAnnouncements() {
+    this.error = false;
+    axios
+      .get(APIConfig.buildUrl("/announcements"))
+      .then((res: AxiosResponse<iAnnouncement[]>) => {
+        this.announcements = res.data;
+        this.sortAnnouncements();
+      })
+      .catch(res => {
+        this.error = res.data;
+      });
+  }
+
+  sortAnnouncements() {
+    this.announcements = this.announcements.sort(this.decreasingOrder);
+  }
+
+  decreasingOrder(a: iAnnouncement, b: iAnnouncement) {
+    return b.id - a.id;
   }
 }
 </script>

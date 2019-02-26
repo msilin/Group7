@@ -9,7 +9,7 @@ import Products from "./views/Dashboard/Products.vue";
 import Profile from "./views/Dashboard/Profile.vue";
 import Services from "./views/Dashboard/Services.vue";
 import EditEmployeePage from "./views/Dashboard/EditEmployee.vue";
-import ServicesPage from "./views/ServicesPage.vue"
+import ServicesPage from "./views/ServicesPage.vue";
 
 Vue.use(Router);
 
@@ -55,15 +55,18 @@ export default new Router({
         },
         {
           path: "announcements",
+          name: "announcements",
           component: Announcements
         },
         {
           path: "employees",
+          name: "employees",
           component: Employees
         },
         {
           path: "employee/:id",
-          component: EditEmployeePage
+          component: EditEmployeePage,
+          props: true
         }
 
       ]

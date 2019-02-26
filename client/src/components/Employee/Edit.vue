@@ -1,6 +1,6 @@
 <template>
   <div class="edit columns">
-    <div class="column">
+    <div v-if="user" class="column">
       <div class="field">
         <label class="label">First Name</label>
         <div class="control">
@@ -96,8 +96,8 @@ export default class EditEmployee extends Vue {
   uploadedFile: any = null;
   viewerPriveleges: userType = userType.ANON;
 
-  @Prop({ default: null })
-  user!: iUser | null;
+  @Prop({ default: false })
+  user!: iUser | false;
 
   patchUser() {
     this.error = false;
@@ -109,7 +109,7 @@ export default class EditEmployee extends Vue {
         })
         .then((response: AxiosResponse<iUser>) => {
           this.$emit("success");
-          this.$router.back();
+          this.$router.push({name: "employees"});
         })
         .catch((errorResponse: any) => {
           this.error = errorResponse.response.data.reason;
@@ -170,7 +170,6 @@ export default class EditEmployee extends Vue {
     // reset form to initial state
     this.currentStatus = STATUS_INITIAL;
     this.uploadError = null;
-    this.viewerPriveleges = this.$store.state.user.userType;
   }
 
   mounted() {
