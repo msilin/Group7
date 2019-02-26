@@ -26,7 +26,7 @@ export class ServiceController extends DefaultController {
             serviceRepo.save(newItem).then((savedService: Service) => {
                 res.status(201).send(savedService);
             });
-        })
+        });
 
         router.route("/services/:id").get((req: Request, res: Response) => {
             const serviceRepo = getRepository(Service)
@@ -36,21 +36,24 @@ export class ServiceController extends DefaultController {
                     return;
                 }
                 res.status(200).send(foundService);
-            })
+            });
         })
         .put((req: Request, res: Response) => {
-            const serviceRepo = getRepository(Service)
-            const updatedService: Service = req.body
+            const serviceRepo = getRepository(Service);
+            const updatedService: Service = req.body;
             serviceRepo.findOne(updatedService.id).then((foundService: Service | undefined) => {
                 if (foundService) {
                     serviceRepo.save(updatedService).then((savedService: Service) => {
-                        res.status(200).send(savedService)
-                    })
+                        res.status(200).send(savedService);
+                    });
                 } else {
-                    res.status(404).send("Cannot update nonexistent service")
+                    res.status(404).send("Cannot update nonexistent service");
                 }
-            })
-        })
+            });
+        }).delete((req: Request, res: Response) => {
+            const serviceRepo = getRepository(Service);
+            serviceRepo.delete(req.params.id).then(() => { res.sendStatus(200); });
+        });
 
         return router;
     }

@@ -4,7 +4,7 @@
       v-on:cancel="cancelEdit"
       v-on:post="postAnnouncement"
       v-bind:editing="editing"
-      v-on:update="patchAnnouncement"
+      v-on:update="updateAnnouncement"
     ></EditAnnouncement>
     <AdminList
     v-on:delete="deleteAnnouncement" 
@@ -56,24 +56,20 @@ export default class Announcements extends Vue {
     });
   }
 
-  patchAnnouncement(t: string, c: string) {
+  updateAnnouncement(t: string, c: string) {
     this.error = false;
     var id;
     if(this.editing) {
       id = this.editing.id;
     } else {
-      this.error = "Something went wrong...";
+      this.error = "Not currently editing an announcement.";
       return;
     }
     const a = {...this.editing, ...{'title': t, 'content': c}};
     axios
-      .patch(APIConfig.buildUrl(`${this.baseUrl}/${id}`), {
-        announcement: a
-      })
+      .put(APIConfig.buildUrl(`${this.baseUrl}/${id}`), {...a})
       .then((res: AxiosResponse<iAnnouncement>) => {
-        this.announcements = this.announcements.filter(
-          a => a.id !== res.data.id
-        );
+        this.announcements = this.announcements.filter(a => a.id !== res.data.id);
         this.announcements.push(res.data);
         this.sortAnnouncements();
         this.editing = false;
@@ -84,6 +80,7 @@ export default class Announcements extends Vue {
   }
 
   postAnnouncement(title: string, content: string) {
+    this.error = false;
     axios
       .post(APIConfig.buildUrl(this.baseUrl), {
         newTitle: title,
@@ -95,7 +92,7 @@ export default class Announcements extends Vue {
         this.editing = false;
       })
       .catch(res => {
-        return null;
+        this.error = res.response && res.response.data.error;
       });
   }
 
