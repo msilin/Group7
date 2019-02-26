@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <LogoHero></LogoHero>
-    <p>{{ priceRange }}</p>
     <div class="columns">
       <div class="column is-one-quarter">
         <div class="panel">
@@ -138,11 +137,6 @@ export default class TestShop extends Vue {
     }
   }
 
-}
-
-interface CategoryPicked {
-  category: iCategory;
-  picked: boolean;
 }
 
 </script>
