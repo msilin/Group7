@@ -30,3 +30,6 @@ insert into dev.item_categories_category values (6, 3);
 insert into dev.item_categories_category values (7, 4);
 insert into dev.item_categories_category values (8, 3);
 insert into dev.item_categories_category values (8, 5);
+
+insert into dev.service values (1, "2018-11-03", "Tune-Up", "Come get your bike tuned up! Only $120 per bike!", "https://img.grouponcdn.com/deal/jESiyF6aeCwEdTqsGXfd61/87638744-2048x1229/v1/c700x420.jpg");
+insert into dev.service values (2, "2019-01-03", "Brakes.", "You need them. Until you don't.", "https://img.grouponcdn.com/deal/jFmcNcxF9ZVfTKSMArBb/du-2048x1229/v1/c700x420.jpg");
