@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
 import { Item } from "./item.entity";
 import { Order } from "./order.entity";
 
@@ -13,17 +13,10 @@ export class OrderItem {
   @Column({ default: false})
   public isPickup!: boolean;
 
-  @Column()
-  public shippingAddress!: string;
-
-  @Column()
-  public trackingNumber!: number;
-
   @OneToOne((type) => Item, {cascade: false})
   @JoinColumn()
   public item!: Item;
 
-  @OneToOne((type) => Order)
-  @JoinColumn()
+  @ManyToOne((type) => Order, (order) => order.items)
   public order!: Order;
 }

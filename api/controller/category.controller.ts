@@ -52,6 +52,10 @@ export class CategoryController extends DefaultController {
                 }
             })
         })
+        .delete((req: Request, res: Response) => {
+            const categoryRepo = getRepository(Category)
+            categoryRepo.delete(req.params.id).then(() => { res.sendStatus(200) })
+        })
 
         return router;
     }
