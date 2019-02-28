@@ -37,8 +37,7 @@ export class ServiceController extends DefaultController {
                 }
                 res.status(200).send(foundService);
             });
-        })
-        .put((req: Request, res: Response) => {
+        }).put((req: Request, res: Response) => {
             const serviceRepo = getRepository(Service);
             const updatedService: Service = req.body;
             serviceRepo.findOne(updatedService.id).then((foundService: Service | undefined) => {
@@ -49,11 +48,11 @@ export class ServiceController extends DefaultController {
                 } else {
                     res.status(404).send("Cannot update nonexistent service");
                 }
-            });
+            })
         }).delete((req: Request, res: Response) => {
-            const serviceRepo = getRepository(Service);
-            serviceRepo.delete(req.params.id).then(() => { res.sendStatus(200); });
-        });
+            const serviceRepo = getRepository(Service)
+            serviceRepo.delete(req.params.id).then(() => { res.sendStatus(200) })
+        })
 
         return router;
     }

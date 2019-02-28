@@ -9,7 +9,7 @@
         <p class="has-text-centered is-marginless">{{ item.name }}</p>
         <p class="has-text-centered is-marginless">${{ item.price }}</p>
       </div>
-      <a class="button is-small is-fullwidth">Add to cart</a>
+      <a class="button is-small is-fullwidth" v-on:click="addToCart(item)">Add to cart</a>
     </div>
     </a>
   </div>
@@ -32,6 +32,10 @@ export default class ShopItem extends Vue {
         this.item.imageUrl = "https://bulma.io/images/placeholders/128x128.png";
       }
     }
+  }
+
+  addToCart(item: iItem) {
+    this.$store.commit("addItem", item)
   }
 }
 </script>
