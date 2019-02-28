@@ -11,3 +11,8 @@ export interface iItem {
     stock: number;
     categories: iCategory[];
 }
+
+export interface iCartItem {
+    item: iItem;
+    quantity: number;
+  }

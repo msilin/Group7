@@ -51,6 +51,10 @@ export class ServiceController extends DefaultController {
                 }
             })
         })
+        .delete((req: Request, res: Response) => {
+            const serviceRepo = getRepository(Service)
+            serviceRepo.delete(req.params.id).then(() => { res.sendStatus(200) })
+        })
 
         return router;
     }

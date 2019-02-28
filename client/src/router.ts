@@ -10,6 +10,7 @@ import Profile from "./views/Dashboard/Profile.vue";
 import Services from "./views/Dashboard/Services.vue";
 import EditEmployeePage from "./views/Dashboard/EditEmployee.vue";
 import ServicesPage from "./views/ServicesPage.vue";
+import Cart from "./views/Cart.vue";
 
 Vue.use(Router);
 
@@ -31,6 +32,11 @@ export default new Router({
       path: "/services",
       name: "services",
       component: ServicesPage
+    },
+    {
+      path: "/cart",
+      name: "cart",
+      component: Cart
     },
     {
       path: "/dashboard",

@@ -17,11 +17,12 @@
                   <vue-slider 
                     ref="slider" 
                     v-model="priceRange" 
-                    min="0"
+                    v-bind:min="0"
                     v-bind:max="maxPrice"
                     v-bind:sliderStyle="sliderStyle"
                     v-bind:tooltipStyle="tooltipStyle"
                     v-bind:processStyle="processStyle"
+                    v-bind:value="[0, maxPrice]"
                     width="100%"
                     formatter="${value}"
                     merge-formatter="${value1} - ${value2}"
@@ -65,7 +66,7 @@ export default class TestShop extends Vue {
   myCategories: iCategory[] = [];
   myDisplayedItems: iItem[] = [];
   checkedCategories: iCategory[] = [];
-  priceRange = [0, 1000];
+  priceRange = [0, 0];
   maxPrice = 0;
 
   tooltipStyle = [
@@ -100,6 +101,7 @@ export default class TestShop extends Vue {
             this.maxPrice = item.price;
           }
         });
+        this.priceRange = [0, this.maxPrice]
       }
     })
     axios.get(APIConfig.buildUrl("/categories")).then((res: AxiosResponse<iCategory[]>) => {
@@ -116,12 +118,14 @@ export default class TestShop extends Vue {
     if (this.checkedCategories.length > 0) {
       this.myItems.forEach(item => {
         if (item.price >= this.priceRange[0] && item.price <= this.priceRange[1]) {
+          let added = false;
           this.checkedCategories.forEach(category => {
             const found = item.categories.some(icat => {
               return icat.id == category.id;
             })
-            if (found) {
+            if (found && !added) {
               foundItems.push(item);
+              added = true;
             }
           })
         }

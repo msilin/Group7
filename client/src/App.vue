@@ -20,13 +20,12 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <a
+              <router-link
                 class="button is-success is-outlined"
-                v-if="!isLoggedIn"
-                v-on:click="showSignupModal"
-              >
-                <strong>Sign Up</strong>
-              </a>
+                to="/cart"
+                exact-active-class="is-active">
+                <strong>Cart</strong>
+              </router-link>
               <router-link
                 class="button is-link is-outlined"
                 v-if="isLoggedIn"

@@ -5,12 +5,14 @@ import { APIConfig } from "./utils/api.utils";
 import axios, { AxiosResponse } from "axios";
 
 import { iUser } from "@/models/user.interface";
+import { iItem, iCartItem } from './models';
 
 Vue.use(Vuex);
 
 interface iRootState {
   userToken: string | null;
   user: iUser | null;
+  cartItems: iCartItem[];
 }
 
 interface iLoginPayload {
@@ -20,7 +22,8 @@ interface iLoginPayload {
 
 const state: iRootState = {
   userToken: null,
-  user: null
+  user: null,
+  cartItems: [],
 };
 
 const mutations: MutationTree<iRootState> = {
@@ -35,6 +38,39 @@ const mutations: MutationTree<iRootState> = {
   logout(state) {
     state.userToken = null;
     state.user = null;
+  },
+  addItem(state, payload) {
+    let index = -1;
+    state.cartItems.forEach(cartItem => {
+      if (cartItem.item.id == payload.id) {
+        index = state.cartItems.indexOf(cartItem)
+      }
+    });
+    if (index > -1) {
+      state.cartItems[index].quantity++;
+    } else {
+      state.cartItems.push({
+        item: payload,
+        quantity: 1
+      })
+    }
+  },
+  removeItem(state, payload) {
+    const index = state.cartItems.indexOf(payload)
+    if (index > -1) {
+      state.cartItems.splice(index, 1)
+    }
+  },
+  changeItemQuantity(state, payload) {
+    let index = -1;
+    state.cartItems.forEach(cartItem => {
+      if (cartItem.item.id == payload.item.id) {
+        index = state.cartItems.indexOf(cartItem)
+      }
+    })
+    if (index > -1) {
+      state.cartItems[index].quantity = payload.quantity
+    }
   }
 };
 
