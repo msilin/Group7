@@ -6,7 +6,7 @@ insert into dev.announcement values (1, "2019-01-03", "FoxCycle recruits Group V
 
 insert into dev.item values (1, "Cool Bike", 300, "This bike will make you look like royalty.", "https://cdn.shopify.com/s/files/1/0515/7573/products/felt_bicycles_edict_5_2048x.jpg?v=1416191257", false, true, 21);
 insert into dev.item values (2, "Cooler Bike", 1600, "This bike will make you look like a demigod.", "https://static1.squarespace.com/static/51ef033fe4b075ba201dc130/t/5b80795588251bb51fe423bf/1535146345207/2019+Avail+SL+2.jpg?format=1000w", true, true, 3);
-insert into dev.item values (3, "RJAX-ULTIMATE EDITION", 420000, "Just wow.", "https://static1.squarespace.com/static/51ef033fe4b075ba201dc130/t/5b80791a0ebbe8b9b8c73090/1535146279559/2019+Liv+Alight+City.jpg?format=1000w", true, true, 34);
+insert into dev.item values (3, "RJAX-ULTIMATE EDITION", 4200, "Just wow.", "https://static1.squarespace.com/static/51ef033fe4b075ba201dc130/t/5b80791a0ebbe8b9b8c73090/1535146279559/2019+Liv+Alight+City.jpg?format=1000w", true, true, 34);
 insert into dev.item values (4, "RJAX-(less)ULTIMATE EDITION", 400, "Just not wow.", "https://static1.squarespace.com/static/51ef033fe4b075ba201dc130/t/5c3a57e3cd83667f7490340a/1547327463829/?format=2500w", true, true, 12);
 insert into dev.item values (5, "Real Nice Bike", 299, "Buy this plz.", "https://static1.squarespace.com/static/51ef033fe4b075ba201dc130/t/5c3a57e3cd83667f7490340a/1547327463829/?format=2500w", true, false, 19);
 insert into dev.item values (6, "BASIC", 680, "Just wow.", "https://static1.squarespace.com/static/51ef033fe4b075ba201dc130/t/5b80791a0ebbe8b9b8c73090/1535146279559/2019+Liv+Alight+City.jpg?format=1000w", true, true, 14);
@@ -14,7 +14,7 @@ insert into dev.item values (7, "Coolio Bike", 899, "This bike will make you loo
 insert into dev.item values (8, "Bike", 599, "This bike will make you look like royalty.", "https://cdn.shopify.com/s/files/1/0515/7573/products/felt_bicycles_edict_5_2048x.jpg?v=1416191257", false, true, 21);
 
 insert into dev.category values (1, "Mounatin");
-insert into dev.category values (2,  "Road");
+insert into dev.category values (2, "Road");
 insert into dev.category values (3, "BMX");
 insert into dev.category values (4, "Hybrid");
 insert into dev.category values (5, "Tricycle");
