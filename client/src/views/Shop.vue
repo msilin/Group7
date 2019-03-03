@@ -6,27 +6,29 @@
         <div class="panel">
           <p class="panel-heading">Filters</p>
           <div class="panel-block">
-            <button class="button is-link is-outlined is-fullwidth" v-on:click="updateShop">
-              Apply Filters
-            </button>
+            <button
+              class="button is-link is-outlined is-fullwidth"
+              v-on:click="updateShop"
+            >Apply Filters</button>
           </div>
           <div class="panel-block">
             <div class="level container">
               <p class="level-left">Price Range:</p>
               <div class="level-item">
-                  <vue-slider 
-                    ref="slider" 
-                    v-model="priceRange" 
-                    v-bind:min="0"
-                    v-bind:max="maxPrice"
-                    v-bind:sliderStyle="sliderStyle"
-                    v-bind:tooltipStyle="tooltipStyle"
-                    v-bind:processStyle="processStyle"
-                    v-bind:value="[0, maxPrice]"
-                    width="100%"
-                    formatter="${value}"
-                    merge-formatter="${value1} - ${value2}"
-                    tooltip="hover"></vue-slider>
+                <vue-slider
+                  ref="slider"
+                  v-model="priceRange"
+                  v-bind:min="0"
+                  v-bind:max="maxPrice"
+                  v-bind:sliderStyle="sliderStyle"
+                  v-bind:tooltipStyle="tooltipStyle"
+                  v-bind:processStyle="processStyle"
+                  v-bind:value="[0, maxPrice]"
+                  width="100%"
+                  formatter="${value}"
+                  merge-formatter="${value1} - ${value2}"
+                  tooltip="hover"
+                ></vue-slider>
               </div>
             </div>
           </div>
@@ -54,14 +56,16 @@ import { Component, Vue } from "vue-property-decorator";
 import { iItem, iCategory } from "@/models/index.ts";
 import ShopItem from "@/components/ShopItem.vue";
 import LogoHero from "@/components/LogoHero.vue";
-import axios,{ AxiosResponse } from 'axios';
-import { APIConfig } from '@/utils/api.utils';
+import axios, { AxiosResponse } from "axios";
+import { APIConfig } from "@/utils/api.utils";
 import vueSlider from "vue-slider-component/src/vue2-slider.vue";
+
+export {fetchItems, fetchCategories};
 
 @Component({
   components: { ShopItem, LogoHero, vueSlider }
 })
-export default class TestShop extends Vue {
+export default class Shop extends Vue {
   myItems: iItem[] = [];
   myCategories: iCategory[] = [];
   myDisplayedItems: iItem[] = [];
@@ -69,80 +73,100 @@ export default class TestShop extends Vue {
   priceRange = [0, 0];
   maxPrice = 0;
 
-  tooltipStyle = [
-    {
-      "backgroundColor": "#3273dc",
-      "borderColor": "#3273dc"
-    },
-    {
-      "backgroundColor": "#3273dc",
-      "borderColor": "#3273dc"
-    }
-  ]
-  sliderStyle = [
-    {
-      "backgroundColor": "#3273dc"
-    },
-    {
-      "backgroundColor": "#3273dc"
-    }
-  ]
-  processStyle = {
-    "backgroundColor": "#3273dc"
-  }
-
   mounted() {
-    axios.get(APIConfig.buildUrl("/items")).then((res: AxiosResponse<iItem[]>) => {
-      if (res.status == 200) {
-        this.myItems = res.data;
-        this.myDisplayedItems = res.data;
-        this.myItems.forEach(item => {
-          if (item.price > this.maxPrice) {
-            this.maxPrice = item.price;
-          }
-        });
-        this.priceRange = [0, this.maxPrice]
-      }
-    })
-    axios.get(APIConfig.buildUrl("/categories")).then((res: AxiosResponse<iCategory[]>) => {
-      if (res.status == 200) {
-        this.myCategories = res.data;
-        debugger;
-      }
-    })
+    fetchItems().then((items: iItem[]) => {
+      this.myItems = items;
+      this.myDisplayedItems = items;
+      this.myItems.forEach(item => {
+        if (item.price > this.maxPrice) {
+          this.maxPrice = item.price;
+        }
+      });
+      this.priceRange = [0, this.maxPrice];
+    });
+
+    fetchCategories().then((categories: iCategory[]) => {
+      this.myCategories = categories;
+    });
   }
 
   updateShop() {
-    this.myDisplayedItems = []
+    this.myDisplayedItems = [];
     let foundItems: iItem[] = [];
     if (this.checkedCategories.length > 0) {
       this.myItems.forEach(item => {
-        if (item.price >= this.priceRange[0] && item.price <= this.priceRange[1]) {
+        if (
+          item.price >= this.priceRange[0] &&
+          item.price <= this.priceRange[1]
+        ) {
           let added = false;
           this.checkedCategories.forEach(category => {
             const found = item.categories.some(icat => {
               return icat.id == category.id;
-            })
+            });
             if (found && !added) {
               foundItems.push(item);
               added = true;
             }
-          })
+          });
         }
-      })
+      });
       this.myDisplayedItems = foundItems;
     } else {
       this.myItems.forEach(item => {
-        if (item.price >= this.priceRange[0] && item.price <= this.priceRange[1]) {
-          foundItems.push(item)
+        if (
+          item.price >= this.priceRange[0] &&
+          item.price <= this.priceRange[1]
+        ) {
+          foundItems.push(item);
         }
-      })
+      });
       this.myDisplayedItems = foundItems;
     }
   }
 
+  tooltipStyle = [
+    {
+      backgroundColor: "#3273dc",
+      borderColor: "#3273dc"
+    },
+    {
+      backgroundColor: "#3273dc",
+      borderColor: "#3273dc"
+    }
+  ];
+  sliderStyle = [
+    {
+      backgroundColor: "#3273dc"
+    },
+    {
+      backgroundColor: "#3273dc"
+    }
+  ];
+  processStyle = {
+    backgroundColor: "#3273dc"
+  };
 }
 
+function fetchItems(): Promise<iItem[]> {
+    return axios
+      .get(APIConfig.buildUrl("/items"))
+      .then((res: AxiosResponse<iItem[]>) => {
+        if (res.status == 200) return res.data;
+        return [];
+      });
+  }
+  
+  function fetchCategories(): Promise<iCategory[]> {
+    return axios
+      .get(APIConfig.buildUrl("/categories"))
+      .then((res: AxiosResponse<iCategory[]>) => {
+        if (res.status == 200) {
+          return res.data;
+        }
+        return [];
+      });
+  }
 </script>
 
 <style scoped>

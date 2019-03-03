@@ -4,13 +4,13 @@
       <div class="field">
         <label class="label">Title</label>
         <div class="control">
-          <input class="input" type="text" placeholder="Title" v-model="title">
+          <input required class="input" type="text" placeholder="Title" v-model="title">
         </div>
       </div>
       <div class="field">
         <label class="label">Content</label>
         <div class="control">
-          <textarea class="textarea" v-model="content"></textarea>
+          <textarea required class="textarea" v-model="content"></textarea>
         </div>
       </div>
       <p v-if="error" class="has-text-danger has-text-centered">{{ error }}</p>
@@ -53,7 +53,6 @@ export default class EditAnnouncement extends Vue {
       this.title = this.editing.title;
       this.content = this.editing.content;
     } else {
-      this.editing = false;
       this.clear();
     }
   }
