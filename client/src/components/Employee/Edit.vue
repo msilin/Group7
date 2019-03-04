@@ -1,16 +1,16 @@
 <template>
   <div class="edit columns">
-    <div v-if="user" class="column">
+    <div class="column">
       <div class="field">
         <label class="label">First Name</label>
         <div class="control">
-          <input class="input" type="text" placeholder="first name" v-model="user.firstName">
+          <input class="input" type="text" placeholder="first name" v-model="firstName">
         </div>
       </div>
       <div class="field">
         <label class="label">Last Name</label>
         <div class="control">
-          <input class="input" type="text" placeholder="last name" v-model="user.lastName">
+          <input class="input" type="text" placeholder="last name" v-model="lastName">
         </div>
       </div>
       <div class="field">
@@ -21,7 +21,19 @@
             type="email"
             required
             placeholder="Email"
-            v-model="user.emailAddress"
+            v-model="email"
+          >
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Password</label>
+        <div class="control">
+          <input
+            class="input"
+            type="password"
+            required
+            placeholder="Password"
+            v-model="password"
           >
         </div>
       </div>
@@ -29,20 +41,25 @@
         <label class="label">Permissions</label>
         <div class="control">
           <label class="radio">
-            <input type="radio" value="2" name="permission" v-model="user.userType">
+            <input type="radio" value="2" name="permission" v-model="userType">
             Admin
           </label>
           <label class="radio">
-            <input type="radio" value="1" name="permission" v-model="user.userType">
+            <input type="radio" value="1" name="permission" v-model="userType">
             Employee
           </label>
         </div>
       </div>
-      <div class="field is-horizontal">
+      <div v-if="user" class="field is-horizontal">
         <div class="control">
-          <button v-on:click="patchUser" class="button is-primary is-outlined">Save</button>
+          <button v-on:click="patchUser" class="button is-primary is-outlined">Update</button>
           &nbsp;
-          <button v-on:click="cancel" class="button is-danger is-outlined">Cancel</button>
+          <button v-on:click="$emit('cancel')" class="button is-danger is-outlined">Clear</button>
+        </div>
+      </div>
+      <div v-else class="field is-horizontal">
+        <div class="control">
+          <button v-on:click="postUser" class="button is-primary is-outlined">Save</button>
         </div>
       </div>
     </div>
@@ -78,7 +95,7 @@
 <script lang="ts">
 import axios, { AxiosResponse } from "axios";
 import Vue from "vue";
-import { Component, Prop } from "vue-property-decorator";
+import { Component, Prop, Watch } from "vue-property-decorator";
 import { APIConfig } from "@/utils/api.utils";
 import { iUser, userType } from "@/models/index";
 
@@ -94,26 +111,63 @@ export default class EditEmployee extends Vue {
   currentStatus: number | null = null;
   uploadError: string | null = null;
   uploadedFile: any = null;
-  viewerPriveleges: userType = userType.ANON;
+
+  firstName: string = ""
+  lastName: string = ""
+  email: string = ""
+  password: string = ""
+  typeOfUser: userType = userType.ANON
 
   @Prop({ default: false })
   user!: iUser | false;
 
+  @Prop()
+  viewerPriveleges: userType = userType.ANON;
+
+  refresh() {
+    if (this.user != false && this.user != null) {
+      this.firstName = this.user.firstName;
+      this.lastName = this.user.lastName;
+      this.email = this.user.emailAddress;
+      this.password = this.user.password;
+      this.typeOfUser = this.user.userType;
+    } else {
+      this.firstName = ""
+      this.lastName = ""
+      this.email = ""
+      this.password = ""
+      this.typeOfUser = userType.ANON
+    }
+  }
+
+  @Watch('user')
+  handleUserChange(newUser: iUser, oldUser: iUser) {
+    this.refresh();
+  }
+
   patchUser() {
-    this.error = false;
     if (this.user) {
-      const url = `${APIConfig.url}/users/${this.user.id}`;
-      axios
-        .patch(url, {
-          user: this.user
-        })
-        .then((response: AxiosResponse<iUser>) => {
-          this.$emit("success");
-          this.$router.push({name: "employees"});
-        })
-        .catch((errorResponse: any) => {
-          this.error = errorResponse.response.data.reason;
-        });
+      this.user.firstName = this.firstName
+      this.user.lastName = this.lastName
+      this.user.password = this.password
+      this.user.emailAddress = this.email
+      this.user.userType = this.typeOfUser
+      this.$emit('update')
+    } else {
+      this.error = "Uh oh...."
+    }
+  }
+
+  postUser() {
+    if (this.user == false) {
+      const newUser = {
+        firstName: this.firstName,
+        lastName: this.lastName,
+        emailAddress: this.email,
+        password: this.password,
+        userType: this.typeOfUser
+      }
+      this.$emit('post', newUser)
     }
   }
 
@@ -174,6 +228,7 @@ export default class EditEmployee extends Vue {
 
   mounted() {
     this.reset();
+    this.refresh();
   }
 
   //computed
