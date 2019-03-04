@@ -48,8 +48,4 @@ export default class EmployeeList extends Vue {
   
   error: string | boolean = false;
 }
-
-interface Users {
-  users: iUser[];
-}
 </script>
