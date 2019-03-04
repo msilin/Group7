@@ -15,7 +15,10 @@ import {
   faEdit,
   faTrash,
   faUserCircle,
-  faWrench
+  faWrench,
+  faBan,
+  faDollarSign,
+  faPlus
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -30,7 +33,10 @@ library.add(
   faStore,
   faShippingFast,
   faUserCircle,
-  faWrench
+  faWrench,
+  faBan,
+  faDollarSign,
+  faPlus
 );
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);

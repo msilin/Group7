@@ -36,9 +36,9 @@ export class AnnouncementController extends DefaultController {
             const announcementRepo = getRepository(Announcement);
             announcementRepo.delete(req.params.id).then(() => { res.sendStatus(200); });
         })
-            .patch((req: Request, res: Response) => {
+            .put((req: Request, res: Response) => {
                 const announcementRepo = getRepository(Announcement);
-                const { announcement } = req.body;
+                const announcement: Announcement = req.body;
                 announcementRepo.save(announcement).then((savedAnnouncement: Announcement) => {
                     if (savedAnnouncement) {
                         res.status(200).send(savedAnnouncement);

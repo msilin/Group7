@@ -1,28 +1,28 @@
 <template>
-  <div id="homelist">
+  <div id="serviceslist">
     <div class="box scrollable">
       <table class="table is-hoverable is-fullwidth">
         <thead>
           <tr>
             <th>Title</th>
             <th>Date</th>
-            <th>Content</th>
+            <th>Description</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(a, index) in announcements" v-bind:key="index">
-            <td>{{a.title}}</td>
+          <tr v-for="(s, index) in serviceList" v-bind:key="index">
+            <td>{{s.title}}</td>
             <td>{{formattedDate(index)}}</td>
-            <td>{{a.content}}</td>
+            <td>{{s.content}}</td>
             <td>
-              <button class="button is-info is-outlined is-small" v-on:click="$emit('edit', a)">
+              <button class="button is-info is-outlined is-small" v-on:click="$emit('edit', s)">
                 <font-awesome-icon class="icon" icon="edit"></font-awesome-icon>
               </button>
               &nbsp;
               <button
                 class="button is-danger is-outlined is-small"
-                v-on:click="$emit('delete', a)"
+                v-on:click="$emit('delete', s)"
               >
                 <font-awesome-icon class="icon" icon="trash"></font-awesome-icon>
               </button>
@@ -37,18 +37,18 @@
 <script lang="ts">
 import Vue from "vue";
 import { Component, Prop, Watch } from "vue-property-decorator";
-import { iAnnouncement } from "@/models/announcement.interface";
-import axios, { AxiosResponse } from "axios";
-import { APIConfig } from "@/utils/api.utils";
+import { iService } from "@/models/service.interface";
 import { formatDate } from "@/utils/date.utils";
+import { APIConfig } from "@/utils/api.utils";
+import axios, { AxiosResponse } from "axios";
 
 @Component
-export default class AdminList extends Vue {
-  @Prop({default: false}) announcements!: iAnnouncement[] | false;
-  
+export default class ServiceList extends Vue {
+  @Prop({ default: false }) serviceList!: iService[] | false;
+
   formattedDate(index: number): string {
-    if(this.announcements){
-     return formatDate(this.announcements[index].datePosted);
+    if (this.serviceList) {
+      return formatDate(this.serviceList[index].datePosted);
     }
     return "";
   }
@@ -61,3 +61,5 @@ export default class AdminList extends Vue {
   height: 400px;
 }
 </style>
+
+
