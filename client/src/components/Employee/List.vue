@@ -17,7 +17,7 @@
           <td>{{e.firstName}}</td>
           <td>{{e.userType === 2 ? "Admin" : "Employee"}}</td>
           <td>
-            <button class="button is-info is-outlined is-small" v-on:click="edit(e)">
+            <button class="button is-info is-outlined is-small" v-on:click="$emit('edit', e)">
               <font-awesome-icon class="icon" icon="edit"></font-awesome-icon>
             </button>
           </td>
@@ -42,28 +42,11 @@ import { userType, iUser } from "@/models/index";
 
 @Component
 export default class EmployeeList extends Vue {
-  users: iUser[] = [];
+  
+  @Prop({ default: [] })
+  users!: iUser[];
+  
   error: string | boolean = false;
-
-  mounted() {
-    this.fetchUsers();
-  }
-
-  fetchUsers() {
-    this.error = false;
-    axios
-      .get(APIConfig.buildUrl("/users"))
-      .then((response: AxiosResponse<Users>) => {
-        this.users = response.data.users;
-      })
-      .catch((errorResponse: any) => {
-        this.error = errorResponse.response;
-      });
-  }
-
-  edit(u: iUser): void {
-    this.$router.push(`/dashboard/employee/${u.id}`);
-  }
 }
 
 interface Users {
