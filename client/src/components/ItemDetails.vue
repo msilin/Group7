@@ -28,6 +28,7 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 import { APIConfig } from "../utils/api.utils";
 import { Component, Prop, Vue, Watch } from "vue-property-decorator";
+import { iItem } from "../models/index"
 @Component
 export default class ItemDetails extends Vue {
     item: iItem | false = false;

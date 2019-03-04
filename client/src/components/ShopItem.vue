@@ -34,7 +34,9 @@ export default class ShopItem extends Vue {
   }
 
   selectItem() {
-    this.$router.push(`/shop/detail/${this.item.id}`);
+    if (this.item != null) {
+      this.$router.push(`/shop/detail/${this.item.id}`);
+    }
   }
 
   addToCart(item: iItem) {
