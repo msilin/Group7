@@ -1,6 +1,14 @@
 import cors from "cors";
 import express from "express";
-import { AnnouncementController, AuthController, LoginController, UserController, ItemController, ServiceController } from "./controller";
+import {
+  AnnouncementController,
+  AuthController,
+  LoginController,
+  UserController,
+  ItemController,
+  ServiceController,
+  StatusController
+} from "./controller";
 
 import { DBConnection } from "./connection";
 import { CategoryController } from "./controller/category.controller";
@@ -28,11 +36,11 @@ export class Server {
       app.use("/", new ItemController().router);
       app.use("/", new ServiceController().router);
       app.use("/", new CategoryController().router);
+      app.use("/", new StatusController().router);
 
       return app;
     });
   }
-
 }
 
 export default Server;

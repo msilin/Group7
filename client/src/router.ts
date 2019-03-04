@@ -11,6 +11,8 @@ import Services from "./views/Dashboard/Services.vue";
 import EditEmployeePage from "./views/Dashboard/EditEmployee.vue";
 import ServicesPage from "./views/ServicesPage.vue";
 import Cart from "./views/Cart.vue";
+import OrderStatusPage from "./views/OrderStatusPage.vue";
+import OrderSearchPage from "./views/OrderSearchPage.vue";
 
 Vue.use(Router);
 
@@ -37,6 +39,11 @@ export default new Router({
       path: "/cart",
       name: "cart",
       component: Cart
+    },
+    {
+      path: "/status",
+      name: "status",
+      component: OrderStatusPage
     },
     {
       path: "/dashboard",
@@ -74,7 +81,6 @@ export default new Router({
           component: EditEmployeePage,
           props: true
         }
-
       ]
     }
   ]
