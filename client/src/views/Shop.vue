@@ -15,20 +15,19 @@
             <div class="level container">
               <p class="level-left">Price Range:</p>
               <div class="level-item">
-                <vue-slider
-                  ref="slider"
-                  v-model="priceRange"
-                  v-bind:min="0"
-                  v-bind:max="maxPrice"
-                  v-bind:sliderStyle="sliderStyle"
-                  v-bind:tooltipStyle="tooltipStyle"
-                  v-bind:processStyle="processStyle"
-                  v-bind:value="[0, maxPrice]"
-                  width="100%"
-                  formatter="${value}"
-                  merge-formatter="${value1} - ${value2}"
-                  tooltip="hover"
-                ></vue-slider>
+                  <vue-slider 
+                    ref="slider"
+                    v-model="priceRange" 
+                    v-bind:min="0"
+                    v-bind:max="maxPrice"
+                    v-bind:sliderStyle="sliderStyle"
+                    v-bind:tooltipStyle="tooltipStyle"
+                    v-bind:processStyle="processStyle"
+                    v-bind:value="[0, maxPrice]"
+                    width="100%"
+                    formatter="${value}"
+                    merge-formatter="${value1} - ${value2}"
+                    tooltip="hover"></vue-slider>
               </div>
             </div>
           </div>
