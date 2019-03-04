@@ -1,4 +1,5 @@
 insert into dev.user values (1, "Admin", "Super", "test", "", "test", 2);
+insert into dev.user values (2, "Employee", "Just-Okay", "emp", "", "emp", 1);
 
 insert into dev.announcement values (3, "2019-02-05", "Opening soon", "Progress has been made... hopefully this will get done.");
 insert into dev.announcement values (2, "2019-01-15", "In Progress", "Site renovation is underway");
