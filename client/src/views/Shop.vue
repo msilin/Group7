@@ -15,7 +15,7 @@
               <p class="level-left">Price Range:</p>
               <div class="level-item">
                   <vue-slider 
-                    ref="slider" 
+                    ref="slider"
                     v-model="priceRange" 
                     v-bind:min="0"
                     v-bind:max="maxPrice"

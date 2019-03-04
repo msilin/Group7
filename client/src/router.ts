@@ -11,6 +11,7 @@ import Services from "./views/Dashboard/Services.vue";
 import EditEmployeePage from "./views/Dashboard/EditEmployee.vue";
 import ServicesPage from "./views/ServicesPage.vue";
 import Cart from "./views/Cart.vue";
+import ItemDetails from "./components/ItemDetails.vue";
 
 Vue.use(Router);
 
@@ -27,6 +28,11 @@ export default new Router({
       path: "/shop",
       name: "shop",
       component: Shop
+    },
+    {
+      path:"/shop/detail/:id",
+      name: "itemDetail",
+      component: ItemDetails
     },
     {
       path: "/services",
