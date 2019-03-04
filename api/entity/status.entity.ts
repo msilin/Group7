@@ -34,6 +34,7 @@ export class Status {
 
 export enum statusType {
   InCart,
+  Received,
   Shipping,
   Ready,
   Cancelled

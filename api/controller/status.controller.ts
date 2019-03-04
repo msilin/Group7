@@ -12,7 +12,7 @@ export class StatusController extends DefaultController {
     const router = express.Router();
 
     router
-      .route("/services/:trackingNumber")
+      .route("/services/:orderId")
       .get((req: Request, res: Response) => {
         const statusRepo = getRepository(Status);
         statusRepo
