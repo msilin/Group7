@@ -36,10 +36,25 @@ Among the entries added to the database were two users: one admin and one employ
 To log in, you can click the "Log in" button at the top right of the home page and enter the credentials: 
 
 As an admin:
+
 Email: `temp`
+
 Password: `temp`
 
 As an admin:
+
 Email: `emp`
+
 Password: `emp`
 
+With these credentials, you have full access to the site using both user types.
+
+### Features that do not work
+
+Order status
+
+Employee Dashboard Order Queue
+
+Adding/editing employees works but has visual bug
+
+Can't move on beyond cart page.
