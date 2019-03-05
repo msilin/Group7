@@ -21,7 +21,7 @@ In the root of this repository is the file: __test-db-data__, which contains a s
 
 Assuming you have started the MySQL server on localhost using the default credentials, connect to it using the MySQL Client of your choice (MySQLWorkbench, MySQL extension for VSCode, etc).
 
-If you have previosly defined databases on your SQL server, the easiest way to prepare your envrionment is to drop and re-create the dev database. You can do this by executing the statements `drop database dev` and then `create database dev`.
+If you have previosly defined databases on your SQL server, the easiest way to prepare your envrionment is to drop and re-create the dev database. You can do this by executing the statements `drop database dev` and then `create database dev`. Or, you can navigate into your previous project and run docker-compose down. After this, you will have to create the dev database again.
 
 *Note* When you are executing the insert statements, make sure you are executing them directly on the dev database. In the VSCode extension, you need to right-click the dev database and choose __New Query__. In MySQL workbench, right-click the dev database and select __Set as Default Schema__.
 
