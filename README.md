@@ -15,13 +15,13 @@ Testing: Michael Silin
 
 ## Database
 
-In the root of this repository is the file: *test-db-data*, which contains a series of statements that can be used to populate the datebase.
+In the root of this repository is the file: __test-db-data__, which contains a series of statements that can be used to populate the datebase.
 
 If you have previosly defined databases on your SQL server, the easiest way to prepare your envrionment is to drop and re-create the dev database. You can do this by running the queries `drop database dev` and then `create database dev`.
 
-In your sql client of choice (MySQLWorkbench, MySQL extension for VSCode, etc) select the *dev* database.
+In your sql client of choice (MySQLWorkbench, MySQL extension for VSCode, etc) select the __dev__ database.
 
-*Note* When you are executing the insert statements, make sure you are executing them directly on the dev database. In the VSCode extension, you need to right-click the dev database and choose _New Query_. In MySQL workbench, right-click the dev database and select _Set as Default Schema_.
+*Note* When you are executing the insert statements, make sure you are executing them directly on the dev database. In the VSCode extension, you need to right-click the dev database and choose __New Query__. In MySQL workbench, right-click the dev database and select __Set as Default Schema__.
 
 Copy the contents of *test-db-data* into the window used to execute queries. And execute them all at once (or at least in the order that they are defined). The database for the site should be ready to use.
 
