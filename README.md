@@ -21,7 +21,7 @@ If you have previosly defined databases on your SQL server, the easiest way to p
 
 In your sql client of choice (MySQLWorkbench, MySQL extension for VSCode, etc) select the *dev* database.
 
-*Note* When you are executing the insert statements, make sure you are executing them directly on the dev database. In the VSCode extension, you need to right-click the dev database and choose *New Query*. In MySQL workbench, right-click the dev database and select `Set as Default Schema`.
+*Note* When you are executing the insert statements, make sure you are executing them directly on the dev database. In the VSCode extension, you need to right-click the dev database and choose _New Query_. In MySQL workbench, right-click the dev database and select _Set as Default Schema_.
 
 Copy the contents of *test-db-data* into the window used to execute queries. And execute them all at once (or at least in the order that they are defined). The database for the site should be ready to use.
 
